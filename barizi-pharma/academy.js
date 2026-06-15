@@ -173,14 +173,14 @@ document.addEventListener('keydown', function (e) {
 // ---- PAYSTACK PAYMENT ----
 var SERVER = 'http://localhost:3000'; // change to your live domain when deployed
 
-// Course prices in KES (update as needed)
+// Program prices in KES — must match course card h4 titles exactly
 var COURSE_PRICES = {
-  'Introduction to AI in Pharma'            : 4500,
-  'Machine Learning for Drug Discovery'     : 7500,
-  'Clinical Data Science & Analytics'       : 8500,
-  'Pharmacovigilance & AI Safety'           : 6000,
-  'Regulatory Affairs Essentials'           : 3500,
-  'Digital Health & Telemedicine'           : 6500
+  'Regulatory Affairs Foundations'              : 3500,
+  'QMS & ISO 9001 Lead Auditor Preparation'     : 7500,
+  'Advanced Pharmacovigilance Leadership'       : 8500,
+  'Pharmaceutical Policy & Leadership'          : 6000,
+  'Medical Governance Essentials'               : 3500,
+  'Industrial Pharmacy Operations Excellence'   : 6500
 };
 
 function submitEnroll(e) {

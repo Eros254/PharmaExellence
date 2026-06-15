@@ -1,0 +1,23 @@
+{
+  "name": "barizi-server",
+  "version": "1.0.0",
+  "description": "Barizi Pharma backend — Paystack payments, Express API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["pharma", "paystack", "express"],
+  "author": "Barizi Pharma",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.15.2",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "paystack": "^2.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
