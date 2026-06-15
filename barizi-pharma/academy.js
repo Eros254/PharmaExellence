@@ -171,7 +171,9 @@ document.addEventListener('keydown', function (e) {
 });
 
 // ---- PAYSTACK PAYMENT ----
-var SERVER = 'http://localhost:3000'; // change to your live domain when deployed
+var SERVER = window.location.protocol === 'file:'
+  ? 'http://localhost:3000'
+  : window.location.origin;
 
 // Program prices in KES — must match course card h4 titles exactly
 var COURSE_PRICES = {
