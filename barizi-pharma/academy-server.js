@@ -71,7 +71,7 @@ function verifyWebhookSignature(rawBody, signature) {
 app.get('/api/health', (req, res) => {
   res.json({
     status : 'ok',
-    app    : process.env.APP_NAME || 'Pharma Excellence Academy Server',
+    app    : process.env.APP_NAME || 'Skillex Academy Server',
     env    : process.env.NODE_ENV || 'development',
     time   : new Date().toISOString()
   });
