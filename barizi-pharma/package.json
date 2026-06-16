@@ -1,14 +1,14 @@
 {
-  "name": "barizi-server",
+  "name": "pharma-excellence-server",
   "version": "1.0.0",
-  "description": "Barizi Pharma backend — Paystack payments, Express API",
-  "main": "server.js",
+  "description": "Pharma Excellence Academy backend — Paystack payments, Express API",
+  "main": "academy-server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node academy-server.js",
+    "dev": "nodemon academy-server.js"
   },
   "keywords": ["pharma", "paystack", "express"],
-  "author": "Barizi Pharma",
+  "author": "Pharma Excellence Academy",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.15.2",

@@ -1,5 +1,5 @@
 /* ===========================
-   BARIZI PHARMA — script.js
+   PHARMA EXCELLENCE ACADEMY — script.js
    =========================== */
 
 // ---- NAVBAR: scroll effect & hamburger ----
@@ -8,6 +8,7 @@ var hamburger = document.getElementById('hamburger');
 var navLinks = document.getElementById('navLinks');
 
 window.addEventListener('scroll', function () {
+  if (!navbar) return;
   if (window.scrollY > 30) {
     navbar.classList.add('scrolled');
   } else {
@@ -15,17 +16,21 @@ window.addEventListener('scroll', function () {
   }
 });
 
-hamburger.addEventListener('click', function () {
-  navLinks.classList.toggle('open');
-});
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', function () {
+    navLinks.classList.toggle('open');
+  });
+}
 
 // Close nav on link click (mobile)
-var navItems = navLinks.querySelectorAll('a');
-navItems.forEach(function (link) {
-  link.addEventListener('click', function () {
-    navLinks.classList.remove('open');
+if (navLinks) {
+  var navItems = navLinks.querySelectorAll('a');
+  navItems.forEach(function (link) {
+    link.addEventListener('click', function () {
+      navLinks.classList.remove('open');
+    });
   });
-});
+}
 
 // ---- SMOOTH SCROLL ----
 function scrollToSection(id) {
@@ -90,6 +95,7 @@ var dots = document.querySelectorAll('.dot');
 var sliderInterval;
 
 function goToSlide(index) {
+  if (!slides.length || !dots.length) return;
   slides[currentSlide].classList.remove('active');
   dots[currentSlide].classList.remove('active');
   currentSlide = index;
@@ -98,11 +104,13 @@ function goToSlide(index) {
 }
 
 function nextSlide() {
+  if (!slides.length) return;
   var next = (currentSlide + 1) % slides.length;
   goToSlide(next);
 }
 
 function startSlider() {
+  if (!slides.length || !dots.length) return;
   sliderInterval = setInterval(nextSlide, 5000);
 }
 
@@ -142,48 +150,38 @@ function submitForm(e) {
 var modal = document.getElementById('modal');
 var modalTitle = document.getElementById('modalTitle');
 var modalDesc = document.getElementById('modalDesc');
+var GOOGLE_FORM_URL = 'https://forms.google.com/';
 
 function openCourse(btn) {
+  if (!modal || !modalTitle || !modalDesc) return;
   var card = btn.closest('.course-card');
   var title = card.querySelector('h4').textContent;
   modalTitle.textContent = title;
-  modalDesc.textContent = 'Fill in your details to enroll in: ' + title;
+  modalDesc.textContent = 'Start your application for: ' + title;
   document.getElementById('enrollSuccess').classList.add('hidden');
   modal.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
+  if (!modal) return;
   modal.classList.add('hidden');
   document.body.style.overflow = '';
 }
 
-modal.addEventListener('click', function (e) {
-  if (e.target === modal) {
-    closeModal();
-  }
-});
+if (modal) {
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+}
 
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') {
     closeModal();
   }
 });
-
-// ---- PAYSTACK PAYMENT ----
-var SERVER = window.location.protocol === 'file:'
-  ? 'http://localhost:3000'
-  : window.location.origin;
-
-// Program prices in KES — must match course card h4 titles exactly
-var COURSE_PRICES = {
-  'Regulatory Affairs Foundations'              : 3500,
-  'QMS & ISO 9001 Lead Auditor Preparation'     : 7500,
-  'Advanced Pharmacovigilance Leadership'       : 8500,
-  'Pharmaceutical Policy & Leadership'          : 6000,
-  'Medical Governance Essentials'               : 3500,
-  'Industrial Pharmacy Operations Excellence'   : 6500
-};
 
 function submitEnroll(e) {
   e.preventDefault();
@@ -193,74 +191,22 @@ function submitEnroll(e) {
   var inputs     = form.querySelectorAll('input');
   var name       = inputs[0].value.trim();
   var email      = inputs[1].value.trim();
-  var org        = inputs[2] ? inputs[2].value.trim() : '';
   var course     = modalTitle.textContent.trim();
-  var amount     = COURSE_PRICES[course] || 5000;
 
   if (!name || !email) {
     alert('Please fill in your name and email.');
     return;
   }
 
-  btn.textContent = 'Processing...';
+  btn.textContent = 'Opening form...';
   btn.disabled    = true;
 
-  // Step 1: Ask server to initialize a Paystack transaction
-  fetch(SERVER + '/api/payment/initialize', {
-    method  : 'POST',
-    headers : { 'Content-Type': 'application/json' },
-    body    : JSON.stringify({ name, email, amount, course, type: 'course', org })
-  })
-  .then(function (res) { return res.json(); })
-  .then(function (data) {
-    if (!data.success) {
-      throw new Error(data.message || 'Could not initialize payment.');
-    }
-
-    // Step 2: Open Paystack's hosted payment page
-    var popup = window.open(data.authorization_url, '_blank', 'width=600,height=700');
-
-    // Step 3: Poll for verification every 4 seconds (up to 3 minutes)
-    var attempts = 0;
-    var maxAttempts = 45;
-    var reference  = data.reference;
-
-    var poll = setInterval(function () {
-      attempts++;
-      if (attempts > maxAttempts) {
-        clearInterval(poll);
-        btn.textContent = 'Confirm Enrollment';
-        btn.disabled    = false;
-        alert('Payment window timed out. If you completed payment, contact support with ref: ' + reference);
-        return;
-      }
-
-      fetch(SERVER + '/api/payment/verify/' + reference)
-        .then(function (r) { return r.json(); })
-        .then(function (v) {
-          if (v.success && v.status === 'success') {
-            clearInterval(poll);
-            if (popup && !popup.closed) popup.close();
-            successMsg.textContent = '🎉 Payment confirmed! KES ' + v.amount + ' received. Check your email for access details.';
-            successMsg.classList.remove('hidden');
-            btn.textContent = 'Confirm Enrollment';
-            btn.disabled    = false;
-            form.reset();
-            setTimeout(function () {
-              closeModal();
-              successMsg.classList.add('hidden');
-            }, 5000);
-          }
-        })
-        .catch(function () { /* keep polling silently */ });
-    }, 4000);
-  })
-  .catch(function (err) {
-    console.error('[ENROLL ERROR]', err);
-    alert('Error: ' + err.message);
-    btn.textContent = 'Confirm Enrollment';
-    btn.disabled    = false;
-  });
+  successMsg.textContent = 'Application started for ' + course + '. Complete the Google Form to submit your details.';
+  successMsg.classList.remove('hidden');
+  window.open(GOOGLE_FORM_URL, '_blank', 'noopener');
+  btn.textContent = 'Continue Application';
+  btn.disabled = false;
+  form.reset();
 }
 
 // ---- ACTIVE NAV LINK on scroll ----

@@ -1,24 +1,24 @@
 /* ===========================
-   BARIZI PHARMA — style.css
-   Colors: Light Blue, White, Lime Green
+   PHARMA EXCELLENCE ACADEMY — style.css
+   Colors: clinical teal, white, navy, healthcare green
    =========================== */
 
 /* --- CSS Variables --- */
 :root {
-  --blue: #3AAFDA;
-  --blue-light: #E8F6FC;
-  --blue-mid: #B3E3F5;
-  --blue-dark: #1A7FA8;
-  --green: #7ED321;
-  --green-dark: #5CA817;
-  --green-light: #F0FAE0;
+  --blue: #1aa6b7;
+  --blue-light: #e7f8fa;
+  --blue-mid: #a7dce3;
+  --blue-dark: #086f83;
+  --green: #35b779;
+  --green-dark: #17855a;
+  --green-light: #e8f8f0;
   --white: #ffffff;
   --off-white: #F7FBFE;
-  --text-dark: #0D2233;
-  --text-mid: #3A5068;
-  --text-light: #7A9BB5;
-  --shadow-soft: 0 4px 24px rgba(58, 175, 218, 0.12);
-  --shadow-card: 0 8px 32px rgba(58, 175, 218, 0.15);
+  --text-dark: #102a37;
+  --text-mid: #395766;
+  --text-light: #7895a3;
+  --shadow-soft: 0 4px 24px rgba(26, 166, 183, 0.12);
+  --shadow-card: 0 8px 32px rgba(26, 166, 183, 0.15);
   --radius: 16px;
   --radius-sm: 8px;
   --transition: 0.3s ease;
@@ -59,7 +59,7 @@ ul { list-style: none; }
 
 img { max-width: 100%; display: block; }
 
-button { cursor: pointer; border: none; font-family: var(--font-body); font-weight: 600; letter-spacing: 0.01em; }
+button { cursor: pointer; border: none; font-family: var(--font-body); font-weight: 600; letter-spacing: 0; }
 
 /* --- Container --- */
 .container {
@@ -198,7 +198,8 @@ nav#navbar.scrolled {
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
-  opacity: 0.35;
+  opacity: 0;
+  display: none;
   pointer-events: none;
 }
 
@@ -245,7 +246,7 @@ nav#navbar.scrolled {
   font-size: clamp(2.2rem, 5vw, 3.8rem);
   font-weight: 800;
   line-height: 1.12;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   margin-bottom: 24px;
   color: var(--text-dark);
   animation: fadeUp 0.7s ease 0.1s both;
@@ -333,7 +334,7 @@ nav#navbar.scrolled {
   font-family: var(--font-head);
   font-size: 2.2rem;
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   color: var(--blue-dark);
 }
 
@@ -418,7 +419,7 @@ nav#navbar.scrolled {
   font-size: clamp(1.7rem, 3.5vw, 2.5rem);
   font-weight: 800;
   line-height: 1.18;
-  letter-spacing: -0.015em;
+  letter-spacing: 0;
   color: var(--text-dark);
   margin-bottom: 14px;
 }
@@ -641,7 +642,174 @@ nav#navbar.scrolled {
   transition: var(--transition);
 }
 
-.service-link:hover { letter-spacing: 0.03em; }
+.service-link:hover { color: var(--green-dark); }
+
+.compact-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 14px;
+}
+
+.mini-card {
+  background: var(--white);
+  border: 1px solid var(--blue-light);
+  border-radius: var(--radius-sm);
+  padding: 18px 14px;
+  text-align: center;
+  font-family: var(--font-head);
+  font-weight: 700;
+  color: var(--blue-dark);
+  box-shadow: var(--shadow-soft);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.info-panel,
+.apply-panel,
+.faq-item,
+.profile-card,
+.post-card,
+.editorial-panel {
+  background: var(--white);
+  border: 1px solid var(--blue-light);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+.info-panel {
+  padding: 34px;
+}
+
+.info-panel h3,
+.faq-item h4,
+.profile-card h3,
+.post-card h3,
+.editorial-panel h3 {
+  font-family: var(--font-head);
+  color: var(--text-dark);
+}
+
+.info-panel h3 {
+  margin-bottom: 14px;
+}
+
+.apply-panel {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+  padding: 42px;
+  background: linear-gradient(135deg, var(--white) 0%, var(--blue-light) 100%);
+}
+
+.apply-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 190px;
+  text-align: center;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.faq-item {
+  padding: 24px;
+}
+
+.faq-item h4 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.faq-item p {
+  color: var(--text-mid);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.page-hero {
+  min-height: 46vh;
+  padding: 130px 24px 72px;
+  background: linear-gradient(135deg, var(--off-white) 0%, var(--blue-light) 70%, var(--green-light) 100%);
+  display: flex;
+  align-items: end;
+}
+
+.page-hero .hero-subtitle {
+  animation: none;
+  margin-bottom: 0;
+}
+
+.faculty-grid,
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.profile-card,
+.post-card {
+  padding: 30px;
+}
+
+.profile-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--green));
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.profile-role,
+.post-date {
+  color: var(--green-dark);
+  font-weight: 700;
+  font-size: 0.84rem;
+  margin: 6px 0 12px;
+}
+
+.profile-card p,
+.post-card p,
+.editorial-panel p {
+  color: var(--text-mid);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.profile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.profile-tags span {
+  background: var(--blue-light);
+  color: var(--blue-dark);
+  border-radius: 50px;
+  padding: 5px 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.editorial-panel {
+  padding: 38px;
+  background: var(--off-white);
+}
 
 /* ===========================
    ACADEMY
@@ -1181,6 +1349,9 @@ nav#navbar.scrolled {
   .hero-graphic { display: none; }
   .services-grid { grid-template-columns: 1fr 1fr; }
   .courses-grid { grid-template-columns: 1fr 1fr; }
+  .compact-grid { grid-template-columns: repeat(3, 1fr); }
+  .faq-grid { grid-template-columns: repeat(2, 1fr); }
+  .faculty-grid, .posts-grid { grid-template-columns: repeat(2, 1fr); }
   .pharmtech-inner { grid-template-columns: 1fr; gap: 40px; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
@@ -1207,6 +1378,7 @@ nav#navbar.scrolled {
 
   .services-grid { grid-template-columns: 1fr; }
   .courses-grid { grid-template-columns: 1fr; }
+  .compact-grid, .faq-grid, .faculty-grid, .posts-grid, .info-grid, .apply-panel { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .form-row { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
@@ -1214,6 +1386,7 @@ nav#navbar.scrolled {
   .stat-divider { display: none; }
   .contact-form { padding: 28px 20px; }
   .modal-box { padding: 28px 22px; }
+  .apply-panel, .editorial-panel { padding: 28px 20px; }
 }
 
 @media (max-width: 480px) {

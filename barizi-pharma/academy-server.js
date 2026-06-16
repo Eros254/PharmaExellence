@@ -1,5 +1,5 @@
 // ============================================================
-//  BARIZI PHARMA — server.js
+//  PHARMA EXCELLENCE ACADEMY — server.js
 //  Node.js + Express backend with Paystack integration
 //  Run: node server.js
 // ============================================================
@@ -50,7 +50,7 @@ app.use(express.static(path.join(__dirname, '..', 'academy.html')));
 //  HELPERS
 // ============================================================
 
-function generateRef(prefix = 'BARIZI') {
+function generateRef(prefix = 'PHARMA') {
   const random = Math.random().toString(36).substring(2, 8).toUpperCase();
   return `${prefix}_${Date.now()}_${random}`;
 }
@@ -71,7 +71,7 @@ function verifyWebhookSignature(rawBody, signature) {
 app.get('/api/health', (req, res) => {
   res.json({
     status : 'ok',
-    app    : process.env.APP_NAME || 'Barizi Pharma Server',
+    app    : process.env.APP_NAME || 'Pharma Excellence Academy Server',
     env    : process.env.NODE_ENV || 'development',
     time   : new Date().toISOString()
   });
@@ -270,7 +270,7 @@ app.get('/api/transactions', async (req, res) => {
 app.listen(PORT, () => {
   console.log('');
   console.log('  ╔══════════════════════════════════════════╗');
-  console.log(`  ║   Barizi Pharma Server                   ║`);
+  console.log(`  ║   Pharma Excellence Academy Server       ║`);
   console.log(`  ║   http://localhost:${PORT}                   ║`);
   console.log(`  ║   Mode: ${(process.env.NODE_ENV || 'development').padEnd(32)}║`);
   console.log('  ╚══════════════════════════════════════════╝');
