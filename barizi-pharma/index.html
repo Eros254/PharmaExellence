@@ -1,417 +1,915 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Skillex Ltd | Professional Pharmacy Training</title>
-  <meta name="description" content="Skillex Academy trains pharmaceutical and healthcare professionals through practical, industry-focused, and internationally aligned programs." />
-  <link rel="stylesheet" href="academy.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pharma Excellence Academy | Professional Pharmacy Training</title>
+    <meta
+      name="description"
+      content="Skillex Academy trains pharmaceutical and healthcare professionals through practical, industry-focused, and internationally aligned programs."
+    />
+    <meta name="theme-color" content="#1aa6b7" />
+    <link rel="stylesheet" href="academy.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#home">Skip to content</a>
+    <div class="nav-overlay" id="navOverlay" hidden></div>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-  <nav id="navbar">
-    <div class="nav-container">
-      <a href="#home" class="logo">
-        <span class="logo-icon">✚</span>
-        <span class="logo-text">Skillex <span class="logo-accent">Ltd</span></span>
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#programs">Programs</a></li>
-        <li><a href="faculty.html">Faculty</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <a class="cta-nav" href="#apply">Apply Now</a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+    <nav id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="logo">
+          <span class="logo-icon">✚</span>
+          <span class="logo-text"
+            >Skillex <span class="logo-accent">Ltd</span></span
+          >
+        </a>
+        <ul class="nav-links" id="navLinks">
+          <button
+            class="drawer-close"
+            id="drawerClose"
+            type="button"
+            aria-label="Close menu"
+          >
+            ×
+          </button>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="faculty.html">Faculty</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a class="cta-nav" href="#apply">Apply Now</a>
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="navLinks"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
 
-  <section id="home" class="hero">
-    <div class="hero-bg-grid"></div>
-    <div class="hero-blob blob1"></div>
-    <div class="hero-blob blob2"></div>
-    <div class="hero-container">
-      <div class="hero-tag">Welcome to Skillex Academy</div>
-      <h1 class="hero-title">
-        Empowering the <span class="highlight">Future</span><br>
-        of <span class="highlight-green">Pharmacy</span>
-      </h1>
-      <p class="hero-subtitle">
-        We train the next generation of pharmaceutical and healthcare professionals through practical,
-        industry-focused, and internationally aligned programs for students, pharmacy staff,
-        entrepreneurs, and healthcare practitioners.
-      </p>
-      <div class="hero-buttons">
-        <button class="btn-primary" onclick="scrollToSection('programs')">Explore Programs</button>
-        <button class="btn-outline" onclick="scrollToSection('apply')">Start Application</button>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-num" data-target="12">0</span><span>-14</span><p>Week Course Durations</p></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num" data-target="5">0</span><span>+</span><p>Professional Certificates</p></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num" data-target="4">0</span><span></span><p>Flexible Study Options</p></div>
-      </div>
-    </div>
-    <div class="hero-graphic" aria-hidden="true">
-      <div class="hex-grid">
-        <div class="hex h1"><span>💊</span></div>
-        <div class="hex h2"><span>🏥</span></div>
-        <div class="hex h3"><span>🧪</span></div>
-        <div class="hex h4"><span>📋</span></div>
-        <div class="hex h5"><span>🎓</span></div>
-        <div class="hex h6"><span>🛡️</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-visual">
-          <div class="about-card-main">
-            <div class="about-icon-big">✚</div>
-            <h3>Our Mission</h3>
-            <p>To provide quality, practical, and affordable pharmaceutical education that empowers healthcare professionals, entrepreneurs, and young people with knowledge, skills, and innovation.</p>
-          </div>
-          <div class="about-card-accent">
-            <span>🌍</span>
-            <p>Building a leading center of pharmaceutical training in Africa and beyond</p>
-          </div>
+    <section id="home" class="hero">
+      <div class="hero-bg-grid"></div>
+      <div class="hero-blob blob1"></div>
+      <div class="hero-blob blob2"></div>
+      <div class="hero-container">
+        <div class="hero-tag">Welcome to Skillex Academy</div>
+        <h1 class="hero-title">
+          Empowering the <span class="highlight">Future</span><br />
+          of <span class="highlight-green">Pharmacy</span>
+        </h1>
+        <p class="hero-subtitle">
+          We train the next generation of pharmaceutical and healthcare
+          professionals through practical, industry-focused, and internationally
+          aligned programs for students, pharmacy staff, entrepreneurs, and
+          healthcare practitioners.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn-primary" onclick="scrollToSection('programs')">
+            Explore Programs
+          </button>
+          <button class="btn-outline" onclick="scrollToSection('apply')">
+            Start Application
+          </button>
         </div>
-        <div class="about-content">
-          <div class="section-label">About Us</div>
-          <h2 class="section-title">Practical Pharmacy Training for a <span class="highlight-green">Changing Healthcare Sector</span></h2>
-          <p class="about-text">
-            Skillex Academy is a professional pharmacy training institution dedicated to excellence
-            in pharmaceutical education, healthcare entrepreneurship, and clinical practice training.
-          </p>
-          <p class="about-text">
-            Our programs combine theory, practical exposure, mentorship, and real-world pharmaceutical
-            experience to prepare competent, innovative, and competitive professionals.
-          </p>
-          <div class="about-pillars">
-            <div class="pillar"><span class="pillar-icon"></span><div><strong>Vision</strong><p>To become a leading center of excellence in pharmaceutical training in Africa and beyond.</p></div></div>
-            <div class="pillar"><span class="pillar-icon"></span><div><strong>Motto</strong><p>Empowering the Future of Pharmacy.</p></div></div>
-            <div class="pillar"><span class="pillar-icon"></span><div><strong>Commitment</strong><p>Producing ethical, competent, and innovative healthcare professionals.</p></div></div>
+        <div class="hero-highlights" aria-label="Academy highlights">
+          <div class="highlight-pill">
+            <span>✓</span> Practical, flexible learning
+          </div>
+          <div class="highlight-pill">
+            <span>✓</span> Real-world industry mentorship
+          </div>
+          <div class="highlight-pill">
+            <span>✓</span> Fast application support
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="services values-section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Our Core Values</div>
-        <h2 class="section-title">The Standards That <span class="highlight">Guide Us</span></h2>
-      </div>
-      <div class="compact-grid">
-        <div class="mini-card">Excellence</div>
-        <div class="mini-card">Integrity</div>
-        <div class="mini-card">Innovation</div>
-        <div class="mini-card">Professionalism</div>
-        <div class="mini-card">Compassion</div>
-        <div class="mini-card">Accountability</div>
-        <div class="mini-card">Leadership</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="programs" class="academy">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Short Professional Courses</div>
-        <h2 class="section-title">Industry-Focused <span class="highlight-green">Certificate Programs</span></h2>
-        <p class="section-sub">Courses are designed for practical career growth in pharmaceutical practice, regulation, business, and healthcare entrepreneurship.</p>
-      </div>
-      <div class="courses-grid">
-        <div class="course-card" data-level="Certificate">
-          <div class="course-badge beginner">Certificate</div>
-          <div class="course-icon">📋</div>
-          <h4>Certificate in Regulatory Affairs</h4>
-          <p>Online training for dossier compilation, product registration, GMP applications, trade permits, variations, and regulatory report writing.</p>
-          <div class="course-meta"><span>⏱ 12-14 weeks</span><span>📄 Online</span></div>
-          <button class="btn-course" onclick="openCourse(this)">Enroll Now</button>
-        </div>
-        <div class="course-card" data-level="Certificate">
-          <div class="course-badge intermediate">Certificate</div>
-          <div class="course-icon">🛡️</div>
-          <h4>Certificate in Pharmacovigilance</h4>
-          <p>Develop practical skills in medicine safety, adverse event reporting, signal awareness, risk communication, and safety documentation.</p>
-          <div class="course-meta"><span>⏱ 12-14 weeks</span><span>📄 Hybrid</span></div>
-          <button class="btn-course" onclick="openCourse(this)">Enroll Now</button>
-        </div>
-        <div class="course-card" data-level="Certificate">
-          <div class="course-badge advanced">Certificate</div>
-          <div class="course-icon">🚚</div>
-          <h4>Certificate in Pharmaceutical Supply Chain Management</h4>
-          <p>Learn procurement, storage, distribution, inventory control, quality assurance, and compliant movement of healthcare products.</p>
-          <div class="course-meta"><span>⏱ 12-14 weeks</span><span>📄 Weekend</span></div>
-          <button class="btn-course" onclick="openCourse(this)">Enroll Now</button>
-        </div>
-        <div class="course-card" data-level="Certificate">
-          <div class="course-badge intermediate">Certificate</div>
-          <div class="course-icon">📣</div>
-          <h4>Certificate in Pharmaceutical Marketing</h4>
-          <p>Medical representatives training covering ethical promotion, product knowledge, territory planning, customer engagement, and reporting.</p>
-          <div class="course-meta"><span>⏱ 12-14 weeks</span><span>📄 Hybrid</span></div>
-          <button class="btn-course" onclick="openCourse(this)">Enroll Now</button>
-        </div>
-        <div class="course-card" data-level="Certificate">
-          <div class="course-badge beginner">Certificate</div>
-          <div class="course-icon">💻</div>
-          <h4>Certificate in Pharmaceutical Digital Marketing</h4>
-          <p>Build healthcare-focused digital skills for compliant content, brand visibility, campaigns, analytics, and online customer education.</p>
-          <div class="course-meta"><span>⏱ 12-14 weeks</span><span>📄 Online</span></div>
-          <button class="btn-course" onclick="openCourse(this)">Enroll Now</button>
-        </div>
-        <div class="course-card" data-level="Private Healthcare">
-          <div class="course-badge advanced">Business</div>
-          <div class="course-icon">🏢</div>
-          <h4>Private Healthcare Business Programs</h4>
-          <p>Training in pharmaceutical business management, medical supplies distribution, healthcare startups, and importation of medical products.</p>
-          <div class="course-meta"><span>⏱ Flexible</span><span>📄 Physical / Hybrid</span></div>
-          <button class="btn-course" onclick="openCourse(this)">Enroll Now</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="learning" class="pharmtech">
-    <div class="container">
-      <div class="pharmtech-inner">
-        <div class="section-header left-align">
-          <div class="section-label">Flexible Study Options</div>
-          <h2 class="section-title">Learn in a Way That <span class="highlight">Fits Your Schedule</span></h2>
-          <p class="section-sub">Students can choose physical classes, weekend classes, online learning, or hybrid training options.</p>
-        </div>
-        <div class="tech-features">
-          <div class="tech-feature"><div class="tech-num">01</div><div class="tech-content"><h4>Physical and Weekend Classes</h4><p>Structured in-person sessions for learners who prefer direct classroom support and practical demonstrations.</p></div></div>
-          <div class="tech-feature"><div class="tech-num">02</div><div class="tech-content"><h4>Online Learning Platform</h4><p>Attend virtual classes, access recorded lessons, download learning materials, complete assignments, and interact with trainers and classmates.</p></div></div>
-          <div class="tech-feature"><div class="tech-num">03</div><div class="tech-content"><h4>Hybrid Training</h4><p>Blend live sessions, digital content, workshops, seminars, mentorship, simulated pharmacy practice, and real-life case studies.</p></div></div>
-          <div class="tech-feature"><div class="tech-num">04</div><div class="tech-content"><h4>Practical Exposure</h4><p>Selected programs include hospital, pharmacy, internship, and industrial attachment opportunities.</p></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="why" class="services">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Why Choose Us</div>
-        <h2 class="section-title">Training Built Around <span class="highlight">Real Healthcare Work</span></h2>
-      </div>
-      <div class="services-grid">
-        <div class="service-card featured">
-          <div class="service-icon">🎓</div>
-          <h3>Experienced Trainers</h3>
-          <p>Learn from industry experts who connect theory to pharmacy operations, regulatory practice, business, and patient-centered healthcare.</p>
-          <ul class="service-list"><li>Mentorship and career guidance</li><li>Modern learning environment</li><li>Accredited learning programmes</li></ul>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">🧪</div>
-          <h3>Practical Training Approach</h3>
-          <p>Our students gain exposure through workshops, seminars, simulated pharmacy practice, case studies, and attachments.</p>
-          <ul class="service-list"><li>Hands-on learning</li><li>Real-life case studies</li><li>Industry mentorship</li></ul>
-        </div>
-        <div class="service-card">
-          <div class="service-icon"></div>
-          <h3>Student Support</h3>
-          <p>We support learners with career mentorship, internship placement assistance, business startup guidance, academic support, and networking.</p>
-          <ul class="service-list"><li>Affordable training programs</li><li>Flexible learning options</li><li>Professional networking</li></ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="academy">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Admissions and Outcomes</div>
-        <h2 class="section-title">Who Can Apply and <span class="highlight-green">Where Graduates Work</span></h2>
-      </div>
-      <div class="info-grid">
-        <div class="info-panel">
-          <h3>Admission Requirements</h3>
-          <ul class="service-list">
-            <li>Valid identification documents</li>
-            <li>A degree in pharmacy or any health-related degree for advanced programs</li>
-            <li>Basic secondary education qualification</li>
-            <li>Passion for healthcare and pharmaceutical practice</li>
-          </ul>
-        </div>
-        <div class="info-panel">
-          <h3>Career Opportunities</h3>
-          <ul class="service-list">
-            <li>Community pharmacies, hospitals, and clinics</li>
-            <li>Pharmaceutical companies and medical supply businesses</li>
-            <li>Healthcare NGOs and pharmaceutical sales teams</li>
-            <li>Healthcare entrepreneurship and startups</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="testimonials">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Testimonials</div>
-        <h2 class="section-title">What Learners <span class="highlight-green">Say</span></h2>
-      </div>
-      <div class="testimonials-slider" id="testimonialsSlider">
-        <div class="testimonial-card active">
-          <p class="quote">Skillex Academy gave me practical pharmaceutical knowledge and confidence to grow my career.</p>
-          <div class="testimonial-author"><div class="author-avatar">FS</div><div><strong>Former Student</strong><span>Skillex Academy</span></div></div>
-        </div>
-        <div class="testimonial-card">
-          <p class="quote">Excellent trainers, quality education, and a very supportive learning environment.</p>
-          <div class="testimonial-author"><div class="author-avatar">HP</div><div><strong>Healthcare Professional</strong><span>Pharmacy Practice Learner</span></div></div>
-        </div>
-        <div class="testimonial-card">
-          <p class="quote">The entrepreneurship training helped me understand how to start and manage a healthcare business responsibly.</p>
-          <div class="testimonial-author"><div class="author-avatar">HE</div><div><strong>Healthcare Entrepreneur</strong><span>Private Healthcare Program</span></div></div>
-        </div>
-      </div>
-      <div class="slider-dots" id="sliderDots">
-        <button class="dot active" onclick="goToSlide(0)" aria-label="Show testimonial 1"></button>
-        <button class="dot" onclick="goToSlide(1)" aria-label="Show testimonial 2"></button>
-        <button class="dot" onclick="goToSlide(2)" aria-label="Show testimonial 3"></button>
-      </div>
-    </div>
-  </section>
-
-  <section id="news" class="services">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">News and Events</div>
-        <h2 class="section-title">Academy <span class="highlight">Updates</span></h2>
-      </div>
-      <div class="services-grid">
-        <div class="service-card"><div class="service-icon"></div><h3>New Course Launches</h3><p>Follow upcoming certificate launches in regulatory affairs, pharmacovigilance, supply chain, and digital marketing.</p><a class="service-link" href="blog.html">Read Blog →</a></div>
-        <div class="service-card"><div class="service-icon"></div><h3>Events and Workshops</h3><p>Healthcare Entrepreneurship Summit, Pharmaceutical Marketing Workshop, Pharmaceutical Skills Boot Camp, and Student Orientation Programme.</p><a class="service-link" href="blog.html">View Events →</a></div>
-        <div class="service-card"><div class="service-icon"></div><h3>Partners and Collaborations</h3><p>We collaborate with pharmaceutical companies, hospitals, clinics, healthcare organizations, international suppliers, and research institutions.</p><a class="service-link" href="#contact">Partner With Us →</a></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="apply" class="academy">
-    <div class="container">
-      <div class="apply-panel">
-        <div>
-          <div class="section-label">Apply Online</div>
-          <h2 class="section-title">Application Form</h2>
-          <p class="about-text">The academy application should be connected to your live Google Form. Once the Google Form URL is available, replace the placeholder link in this section and in the enrollment modal.</p>
-          <ul class="service-list">
-            <li>Name and email address</li>
-            <li>Level of education, including diploma option</li>
-            <li>Program of interest, starting with Certificate in Regulatory Affairs</li>
-            <li>Professional background and preferred study mode</li>
-          </ul>
-        </div>
-        <a class="btn-primary apply-button" href="https://forms.google.com/" target="_blank" rel="noopener">Open Google Form</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="faq" class="services">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Frequently Asked Questions</div>
-        <h2 class="section-title">Quick <span class="highlight">Answers</span></h2>
-      </div>
-      <div class="faq-grid">
-        <div class="faq-item"><h4>Who can apply?</h4><p>Anyone interested in healthcare, pharmacy, or pharmaceutical business can apply.</p></div>
-        <div class="faq-item"><h4>Do you offer online classes?</h4><p>Yes. We offer physical, online, and hybrid learning options.</p></div>
-        <div class="faq-item"><h4>How long are the courses?</h4><p>Course duration varies by program, generally ranging from 12 weeks to 14 weeks.</p></div>
-        <div class="faq-item"><h4>Are practical sessions included?</h4><p>Yes. Our training includes practical and hands-on learning experiences.</p></div>
-        <div class="faq-item"><h4>Do students receive certificates?</h4><p>Yes. Certificates are awarded upon successful completion of courses.</p></div>
-        <div class="faq-item"><h4>Can I study while working?</h4><p>Yes. Flexible schedules include weekend and online classes.</p></div>
-        <div class="faq-item"><h4>Do you offer payment plans?</h4><p>Yes. Flexible payment options are available for some courses.</p></div>
-        <div class="faq-item"><h4>Can international students apply?</h4><p>Yes. International students are welcome for selected programs.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="contact">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-info">
-          <div class="section-label">Contact Us</div>
-          <h2 class="section-title">Talk to <span class="highlight-green">Admissions</span></h2>
-          <p>Reach out for course guidance, applications, partnerships, mentorship, attachments, or private healthcare business training.</p>
-          <div class="contact-details">
-            <div class="contact-item"><span>📍</span><p>Reliance Centre, Woodvale Lane, Westlands</p></div>
-            <div class="contact-item"><span>📧</span><p><a href="mailto:Skillexinstitute@gmail.com">Skillexinstitute@gmail.com</a></p></div>
-            <div class="contact-item"><span>📞</span><p><a href="tel:+254722105773">0722 105 773</a></p></div>
-            <div class="contact-item"><span>🌐</span><p>www.SkillexLtd.com</p></div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num" data-target="12">0</span><span>-14</span>
+            <p>Week Course Durations</p>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-target="5">0</span><span>+</span>
+            <p>Professional Certificates</p>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-target="4">0</span><span></span>
+            <p>Flexible Study Options</p>
           </div>
         </div>
-        <div class="contact-form-wrap">
-          <form id="contactForm" class="contact-form" onsubmit="submitForm(event)">
-            <div class="form-row">
-              <div class="form-group"><label for="name">Full Name</label><input type="text" id="name" placeholder="Your full name" required /></div>
-              <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" placeholder="you@example.com" required /></div>
+      </div>
+      <div class="hero-graphic" aria-hidden="true">
+        <div class="hero-visual-card">
+          <img
+            src="../Images/herobg.jpg"
+            alt="Pharmaceutical training environment"
+            loading="lazy"
+          />
+          <div class="hero-floating-card">
+            <img
+              src="../Images/pharm1.jpg"
+              alt="Modern pharmacy learning"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-visual">
+            <div class="about-card-main about-photo-card">
+              <img
+                src="../Images/pharma1.jpg"
+                alt="Pharmaceutical professional in a training setting"
+                loading="lazy"
+              />
+              <div class="about-image-caption">
+                <h3>Our Mission</h3>
+                <p>
+                  To provide quality, practical, and affordable pharmaceutical
+                  education that empowers healthcare professionals,
+                  entrepreneurs, and young people with knowledge, skills, and
+                  innovation.
+                </p>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="service">Program of Interest</label>
-              <select id="service">
-                <option value="">Select a program...</option>
-                <option>Certificate in Regulatory Affairs</option>
-                <option>Certificate in Pharmacovigilance</option>
-                <option>Pharmaceutical Supply Chain Management</option>
-                <option>Pharmaceutical Marketing</option>
-                <option>Private Healthcare Business Programs</option>
-              </select>
+            <div class="about-card-accent about-mini-card">
+              <img
+                src="../Images/pharm1.jpg"
+                alt="Healthcare learning environment"
+                loading="lazy"
+              />
+              <p>
+                Building a leading center of pharmaceutical training in Africa
+                and beyond
+              </p>
             </div>
-            <div class="form-group"><label for="message">Your Message</label><textarea id="message" rows="4" placeholder="Tell us how we can help..." required></textarea></div>
-            <button type="submit" class="btn-primary full-width">Send Message</button>
-            <div id="formSuccess" class="form-success hidden">Message noted. Please email or call admissions for immediate follow-up.</div>
-          </form>
+          </div>
+          <div class="about-content">
+            <div class="section-label">About Us</div>
+            <h2 class="section-title">
+              Practical Pharmacy Training for a
+              <span class="highlight-green">Changing Healthcare Sector</span>
+            </h2>
+            <p class="about-text">
+              Skillex Academy is a professional pharmacy training institution
+              dedicated to excellence in pharmaceutical education, healthcare
+              entrepreneurship, and clinical practice training.
+            </p>
+            <p class="about-text">
+              Our programs combine theory, practical exposure, mentorship, and
+              real-world pharmaceutical experience to prepare competent,
+              innovative, and competitive professionals.
+            </p>
+            <div class="about-pillars">
+              <div class="pillar">
+                <span class="pillar-icon"></span>
+                <div>
+                  <strong>Vision</strong>
+                  <p>
+                    To become a leading center of excellence in pharmaceutical
+                    training in Africa and beyond.
+                  </p>
+                </div>
+              </div>
+              <div class="pillar">
+                <span class="pillar-icon"></span>
+                <div>
+                  <strong>Motto</strong>
+                  <p>Empowering the Future of Pharmacy.</p>
+                </div>
+              </div>
+              <div class="pillar">
+                <span class="pillar-icon"></span>
+                <div>
+                  <strong>Commitment</strong>
+                  <p>
+                    Producing ethical, competent, and innovative healthcare
+                    professionals.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services values-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Our Core Values</div>
+          <h2 class="section-title">
+            The Standards That <span class="highlight">Guide Us</span>
+          </h2>
+        </div>
+        <div class="compact-grid">
+          <div class="mini-card">Excellence</div>
+          <div class="mini-card">Integrity</div>
+          <div class="mini-card">Innovation</div>
+          <div class="mini-card">Professionalism</div>
+          <div class="mini-card">Compassion</div>
+          <div class="mini-card">Accountability</div>
+          <div class="mini-card">Leadership</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="programs" class="academy">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Short Professional Courses</div>
+          <h2 class="section-title">
+            Industry-Focused
+            <span class="highlight-green">Certificate Programs</span>
+          </h2>
+          <p class="section-sub">
+            Courses are designed for practical career growth in pharmaceutical
+            practice, regulation, business, and healthcare entrepreneurship.
+          </p>
+        </div>
+        <div class="courses-grid">
+          <div class="course-card" data-level="Certificate" data-price="25000">
+            <div class="course-badge beginner">Certificate</div>
+            <div class="course-icon">📋</div>
+            <h4>Certificate in Regulatory Affairs</h4>
+            <p>
+              Online training for dossier compilation, product registration, GMP
+              applications, trade permits, variations, and regulatory report
+              writing.
+            </p>
+            <div class="course-meta">
+              <span>⏱ 12-14 weeks</span><span>📄 Online</span>
+            </div>
+            <button class="btn-course" onclick="openCourse(this)">
+              Enroll Now
+            </button>
+          </div>
+          <div class="course-card" data-level="Certificate" data-price="25000">
+            <div class="course-badge intermediate">Certificate</div>
+            <div class="course-icon">🛡️</div>
+            <h4>Certificate in Pharmacovigilance</h4>
+            <p>
+              Develop practical skills in medicine safety, adverse event
+              reporting, signal awareness, risk communication, and safety
+              documentation.
+            </p>
+            <div class="course-meta">
+              <span>⏱ 12-14 weeks</span><span>📄 Hybrid</span>
+            </div>
+            <button class="btn-course" onclick="openCourse(this)">
+              Enroll Now
+            </button>
+          </div>
+          <div class="course-card" data-level="Certificate" data-price="28000">
+            <div class="course-badge advanced">Certificate</div>
+            <div class="course-icon">🚚</div>
+            <h4>Certificate in Pharmaceutical Supply Chain Management</h4>
+            <p>
+              Learn procurement, storage, distribution, inventory control,
+              quality assurance, and compliant movement of healthcare products.
+            </p>
+            <div class="course-meta">
+              <span>⏱ 12-14 weeks</span><span>📄 Weekend</span>
+            </div>
+            <button class="btn-course" onclick="openCourse(this)">
+              Enroll Now
+            </button>
+          </div>
+          <div class="course-card" data-level="Certificate" data-price="22000">
+            <div class="course-badge intermediate">Certificate</div>
+            <div class="course-icon">📣</div>
+            <h4>Certificate in Pharmaceutical Marketing</h4>
+            <p>
+              Medical representatives training covering ethical promotion,
+              product knowledge, territory planning, customer engagement, and
+              reporting.
+            </p>
+            <div class="course-meta">
+              <span>⏱ 12-14 weeks</span><span>📄 Hybrid</span>
+            </div>
+            <button class="btn-course" onclick="openCourse(this)">
+              Enroll Now
+            </button>
+          </div>
+          <div class="course-card" data-level="Certificate" data-price="20000">
+            <div class="course-badge beginner">Certificate</div>
+            <div class="course-icon">💻</div>
+            <h4>Certificate in Pharmaceutical Digital Marketing</h4>
+            <p>
+              Build healthcare-focused digital skills for compliant content,
+              brand visibility, campaigns, analytics, and online customer
+              education.
+            </p>
+            <div class="course-meta">
+              <span>⏱ 12-14 weeks</span><span>📄 Online</span>
+            </div>
+            <button class="btn-course" onclick="openCourse(this)">
+              Enroll Now
+            </button>
+          </div>
+          <div
+            class="course-card"
+            data-level="Private Healthcare"
+            data-price="35000"
+          >
+            <div class="course-badge advanced">Business</div>
+            <div class="course-icon">🏢</div>
+            <h4>Private Healthcare Business Programs</h4>
+            <p>
+              Training in pharmaceutical business management, medical supplies
+              distribution, healthcare startups, and importation of medical
+              products.
+            </p>
+            <div class="course-meta">
+              <span>⏱ Flexible</span><span>📄 Physical / Hybrid</span>
+            </div>
+            <button class="btn-course" onclick="openCourse(this)">
+              Enroll Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="learning" class="pharmtech">
+      <div class="container">
+        <div class="pharmtech-inner">
+          <div class="pharmtech-intro">
+            <div class="section-header left-align">
+              <div class="section-label">Flexible Study Options</div>
+              <h2 class="section-title">
+                Learn in a Way That
+                <span class="highlight">Fits Your Schedule</span>
+              </h2>
+              <p class="section-sub">
+                Students can choose physical classes, weekend classes, online
+                learning, or hybrid training options.
+              </p>
+            </div>
+            <div class="pharmtech-visual">
+              <img
+                src="../Images/pharmacie-du-futur-1024x576.jpg"
+                alt="Future-ready pharmacy learning experience"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div class="tech-features">
+            <div class="tech-feature">
+              <div class="tech-num">01</div>
+              <div class="tech-content">
+                <h4>Physical and Weekend Classes</h4>
+                <p>
+                  Structured in-person sessions for learners who prefer direct
+                  classroom support and practical demonstrations.
+                </p>
+              </div>
+            </div>
+            <div class="tech-feature">
+              <div class="tech-num">02</div>
+              <div class="tech-content">
+                <h4>Online Learning Platform</h4>
+                <p>
+                  Attend virtual classes, access recorded lessons, download
+                  learning materials, complete assignments, and interact with
+                  trainers and classmates.
+                </p>
+              </div>
+            </div>
+            <div class="tech-feature">
+              <div class="tech-num">03</div>
+              <div class="tech-content">
+                <h4>Hybrid Training</h4>
+                <p>
+                  Blend live sessions, digital content, workshops, seminars,
+                  mentorship, simulated pharmacy practice, and real-life case
+                  studies.
+                </p>
+              </div>
+            </div>
+            <div class="tech-feature">
+              <div class="tech-num">04</div>
+              <div class="tech-content">
+                <h4>Practical Exposure</h4>
+                <p>
+                  Selected programs include hospital, pharmacy, internship, and
+                  industrial attachment opportunities.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why" class="services">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Why Choose Us</div>
+          <h2 class="section-title">
+            Training Built Around
+            <span class="highlight">Real Healthcare Work</span>
+          </h2>
+        </div>
+        <div class="services-grid">
+          <div class="service-card featured">
+            <div class="service-icon">🎓</div>
+            <h3>Experienced Trainers</h3>
+            <p>
+              Learn from industry experts who connect theory to pharmacy
+              operations, regulatory practice, business, and patient-centered
+              healthcare.
+            </p>
+            <ul class="service-list">
+              <li>Mentorship and career guidance</li>
+              <li>Modern learning environment</li>
+              <li>Accredited learning programmes</li>
+            </ul>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🧪</div>
+            <h3>Practical Training Approach</h3>
+            <p>
+              Our students gain exposure through workshops, seminars, simulated
+              pharmacy practice, case studies, and attachments.
+            </p>
+            <ul class="service-list">
+              <li>Hands-on learning</li>
+              <li>Real-life case studies</li>
+              <li>Industry mentorship</li>
+            </ul>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"></div>
+            <h3>Student Support</h3>
+            <p>
+              We support learners with career mentorship, internship placement
+              assistance, business startup guidance, academic support, and
+              networking.
+            </p>
+            <ul class="service-list">
+              <li>Affordable training programs</li>
+              <li>Flexible learning options</li>
+              <li>Professional networking</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="academy">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Admissions and Outcomes</div>
+          <h2 class="section-title">
+            Who Can Apply and
+            <span class="highlight-green">Where Graduates Work</span>
+          </h2>
+        </div>
+        <div class="info-grid">
+          <div class="info-panel">
+            <h3>Admission Requirements</h3>
+            <ul class="service-list">
+              <li>Valid identification documents</li>
+              <li>
+                A degree in pharmacy or any health-related degree for advanced
+                programs
+              </li>
+              <li>Basic secondary education qualification</li>
+              <li>Passion for healthcare and pharmaceutical practice</li>
+            </ul>
+          </div>
+          <div class="info-panel">
+            <h3>Career Opportunities</h3>
+            <ul class="service-list">
+              <li>Community pharmacies, hospitals, and clinics</li>
+              <li>Pharmaceutical companies and medical supply businesses</li>
+              <li>Healthcare NGOs and pharmaceutical sales teams</li>
+              <li>Healthcare entrepreneurship and startups</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Testimonials</div>
+          <h2 class="section-title">
+            What Learners <span class="highlight-green">Say</span>
+          </h2>
+        </div>
+        <div class="testimonials-slider" id="testimonialsSlider">
+          <div class="testimonial-card active">
+            <p class="quote">
+              Skillex Academy gave me practical pharmaceutical knowledge and
+              confidence to grow my career.
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">FS</div>
+              <div>
+                <strong>Former Student</strong><span>Skillex Academy</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="quote">
+              Excellent trainers, quality education, and a very supportive
+              learning environment.
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">HP</div>
+              <div>
+                <strong>Healthcare Professional</strong
+                ><span>Pharmacy Practice Learner</span>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="quote">
+              The entrepreneurship training helped me understand how to start
+              and manage a healthcare business responsibly.
+            </p>
+            <div class="testimonial-author">
+              <div class="author-avatar">HE</div>
+              <div>
+                <strong>Healthcare Entrepreneur</strong
+                ><span>Private Healthcare Program</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slider-dots" id="sliderDots">
+          <button
+            class="dot active"
+            onclick="goToSlide(0)"
+            aria-label="Show testimonial 1"
+          ></button>
+          <button
+            class="dot"
+            onclick="goToSlide(1)"
+            aria-label="Show testimonial 2"
+          ></button>
+          <button
+            class="dot"
+            onclick="goToSlide(2)"
+            aria-label="Show testimonial 3"
+          ></button>
+        </div>
+      </div>
+    </section>
+
+    <section id="news" class="services">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">News and Events</div>
+          <h2 class="section-title">
+            Academy <span class="highlight">Updates</span>
+          </h2>
+        </div>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon"></div>
+            <h3>New Course Launches</h3>
+            <p>
+              Follow upcoming certificate launches in regulatory affairs,
+              pharmacovigilance, supply chain, and digital marketing.
+            </p>
+            <a class="service-link" href="blog.html">Read Blog →</a>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"></div>
+            <h3>Events and Workshops</h3>
+            <p>
+              Healthcare Entrepreneurship Summit, Pharmaceutical Marketing
+              Workshop, Pharmaceutical Skills Boot Camp, and Student Orientation
+              Programme.
+            </p>
+            <a class="service-link" href="blog.html">View Events →</a>
+          </div>
+          <div class="service-card">
+            <div class="service-icon"></div>
+            <h3>Partners and Collaborations</h3>
+            <p>
+              We collaborate with pharmaceutical companies, hospitals, clinics,
+              healthcare organizations, international suppliers, and research
+              institutions.
+            </p>
+            <a class="service-link" href="#contact">Partner With Us →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="apply" class="academy">
+      <div class="container">
+        <div class="apply-panel">
+          <div>
+            <div class="section-label">Apply Online</div>
+            <h2 class="section-title">Application Form</h2>
+            <p class="about-text">
+              The academy application should be connected to your live Google
+              Form. Once the Google Form URL is available, replace the
+              placeholder link in this section and in the enrollment modal.
+            </p>
+            <ul class="service-list">
+              <li>Name and email address</li>
+              <li>Level of education, including diploma option</li>
+              <li>
+                Program of interest, starting with Certificate in Regulatory
+                Affairs
+              </li>
+              <li>Professional background and preferred study mode</li>
+            </ul>
+          </div>
+          <a
+            class="btn-primary apply-button"
+            href="https://forms.google.com/"
+            target="_blank"
+            rel="noopener"
+            >Open Google Form</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="services">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Frequently Asked Questions</div>
+          <h2 class="section-title">
+            Quick <span class="highlight">Answers</span>
+          </h2>
+        </div>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h4>Who can apply?</h4>
+            <p>
+              Anyone interested in healthcare, pharmacy, or pharmaceutical
+              business can apply.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h4>Do you offer online classes?</h4>
+            <p>Yes. We offer physical, online, and hybrid learning options.</p>
+          </div>
+          <div class="faq-item">
+            <h4>How long are the courses?</h4>
+            <p>
+              Course duration varies by program, generally ranging from 12 weeks
+              to 14 weeks.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h4>Are practical sessions included?</h4>
+            <p>
+              Yes. Our training includes practical and hands-on learning
+              experiences.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h4>Do students receive certificates?</h4>
+            <p>
+              Yes. Certificates are awarded upon successful completion of
+              courses.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h4>Can I study while working?</h4>
+            <p>Yes. Flexible schedules include weekend and online classes.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Do you offer payment plans?</h4>
+            <p>Yes. Flexible payment options are available for some courses.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Can international students apply?</h4>
+            <p>
+              Yes. International students are welcome for selected programs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="section-label">Contact Us</div>
+            <h2 class="section-title">
+              Talk to <span class="highlight-green">Admissions</span>
+            </h2>
+            <p>
+              Reach out for course guidance, applications, partnerships,
+              mentorship, attachments, or private healthcare business training.
+            </p>
+            <div class="contact-details">
+              <div class="contact-item">
+                <span>📍</span>
+                <p>Reliance Centre, Woodvale Lane, Westlands</p>
+              </div>
+              <div class="contact-item">
+                <span>📧</span>
+                <p>
+                  <a href="mailto:Skillexinstitute@gmail.com"
+                    >Skillexinstitute@gmail.com</a
+                  >
+                </p>
+              </div>
+              <div class="contact-item">
+                <span>📞</span>
+                <p><a href="tel:+254722105773">0722 105 773</a></p>
+              </div>
+              <div class="contact-item">
+                <span>🌐</span>
+                <p>www.SkillexLtd.com</p>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form-wrap">
+            <form
+              id="contactForm"
+              class="contact-form"
+              onsubmit="submitForm(event)"
+            >
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Full Name</label
+                  ><input
+                    type="text"
+                    id="name"
+                    placeholder="Your full name"
+                    required
+                  />
+                  <div class="field-error" aria-live="polite"></div>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address</label
+                  ><input
+                    type="email"
+                    id="email"
+                    placeholder="you@example.com"
+                    required
+                  />
+                  <div class="field-error" aria-live="polite"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="service">Program of Interest</label>
+                <select id="service">
+                  <option value="">Select a program...</option>
+                  <option>Certificate in Regulatory Affairs</option>
+                  <option>Certificate in Pharmacovigilance</option>
+                  <option>Pharmaceutical Supply Chain Management</option>
+                  <option>Pharmaceutical Marketing</option>
+                  <option>Private Healthcare Business Programs</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Your Message</label
+                ><textarea
+                  id="message"
+                  rows="4"
+                  placeholder="Tell us how we can help..."
+                  required
+                ></textarea>
+                <div class="field-error" aria-live="polite"></div>
+              </div>
+              <button type="submit" class="btn-primary full-width">
+                Send Message
+              </button>
+              <div id="formSuccess" class="form-success hidden">
+                Message noted. Please email or call admissions for immediate
+                follow-up.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="logo">
+              <span class="logo-icon">✚</span
+              ><span class="logo-text"
+                >Skillex <span class="logo-accent">Ltd</span></span
+              >
+            </div>
+            <p>
+              Professional pharmacy training in regulatory affairs,
+              pharmacovigilance, supply chain, marketing, entrepreneurship, and
+              clinical practice development.
+            </p>
+          </div>
+          <div class="footer-links">
+            <h5>Academy</h5>
+            <ul>
+              <li><a href="#programs">Programs</a></li>
+              <li><a href="#learning">Study Options</a></li>
+              <li><a href="#apply">Apply Online</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h5>Pages</h5>
+            <ul>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="faculty.html">Faculty</a></li>
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h5>Follow Us</h5>
+            <ul>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/pharma-excellence-academy-consulting-4463583b3/"
+                  >LinkedIn</a
+                >
+              </li>
+              <li><a href="#">TikTok</a></li>
+              <li><a href="#">YouTube</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Skillex Academy. All rights reserved.</p>
+          <p>NITA, TVETA, Pharmacy and Poisons Board</p>
+        </div>
+      </div>
+    </footer>
+
+    <div id="modal" class="modal-overlay hidden">
+      <div class="modal-box">
+        <button
+          class="modal-close"
+          onclick="closeModal()"
+          aria-label="Close modal"
+        >
+          ×
+        </button>
+        <h3 id="modalTitle">Enroll in Program</h3>
+        <p id="modalDesc">Fill in your details to enroll in this program.</p>
+        <div class="price-pill" id="modalPrice">Price shown here</div>
+        <form onsubmit="submitEnroll(event)">
+          <div class="form-group">
+            <label>Full Name</label
+            ><input type="text" placeholder="Your full name" required />
+            <div class="field-error" aria-live="polite"></div>
+          </div>
+          <div class="form-group">
+            <label>Email</label
+            ><input type="email" placeholder="your@email.com" required />
+            <div class="field-error" aria-live="polite"></div>
+          </div>
+          <div class="form-group">
+            <label>Education Level</label
+            ><input type="text" placeholder="Diploma / Degree / Other" />
+            <div class="field-error" aria-live="polite"></div>
+          </div>
+          <button type="submit" class="btn-primary full-width">
+            Continue Application
+          </button>
+        </form>
+        <div id="enrollSuccess" class="form-success hidden">
+          Application started. Use the Google Form link to complete your
+          submission.
         </div>
       </div>
     </div>
-  </section>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="logo"><span class="logo-icon">✚</span><span class="logo-text">Skillex <span class="logo-accent">Ltd</span></span></div>
-          <p>Professional pharmacy training in regulatory affairs, pharmacovigilance, supply chain, marketing, entrepreneurship, and clinical practice development.</p>
-        </div>
-        <div class="footer-links"><h5>Academy</h5><ul><li><a href="#programs">Programs</a></li><li><a href="#learning">Study Options</a></li><li><a href="#apply">Apply Online</a></li></ul></div>
-        <div class="footer-links"><h5>Pages</h5><ul><li><a href="#about">About Us</a></li><li><a href="faculty.html">Faculty</a></li><li><a href="blog.html">Blog</a></li></ul></div>
-        <div class="footer-links"><h5>Follow Us</h5><ul><li><a href="#">Facebook</a></li><li><a href="#">Instagram</a></li><li><a href="https://www.linkedin.com/in/pharma-excellence-academy-consulting-4463583b3/">LinkedIn</a></li><li><a href="#">TikTok</a></li><li><a href="#">YouTube</a></li></ul></div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 Skillex Academy. All rights reserved.</p>
-        <p>NITA, TVETA, Pharmacy and Poisons Board</p>
-      </div>
-    </div>
-  </footer>
-
-  <div id="modal" class="modal-overlay hidden">
-    <div class="modal-box">
-      <button class="modal-close" onclick="closeModal()" aria-label="Close modal">×</button>
-      <h3 id="modalTitle">Enroll in Program</h3>
-      <p id="modalDesc">Fill in your details to enroll in this program.</p>
-      <form onsubmit="submitEnroll(event)">
-        <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your full name" required /></div>
-        <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com" required /></div>
-        <div class="form-group"><label>Education Level</label><input type="text" placeholder="Diploma / Degree / Other" /></div>
-        <button type="submit" class="btn-primary full-width">Continue Application</button>
-      </form>
-      <div id="enrollSuccess" class="form-success hidden">Application started. Use the Google Form link to complete your submission.</div>
-    </div>
-  </div>
-
-  <script src="academy.js"></script>
-</body>
+    <div
+      id="toastContainer"
+      class="toast-container"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+      ↑
+    </button>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+    <script src="supabase-config.js"></script>
+    <script src="academy.js"></script>
+  </body>
 </html>
