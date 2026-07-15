@@ -14,7 +14,6 @@ var modal = document.getElementById("modal");
 var modalTitle = document.getElementById("modalTitle");
 var modalDesc = document.getElementById("modalDesc");
 var modalPrice = document.getElementById("modalPrice");
-var GOOGLE_FORM_URL = "https://forms.google.com/";
 var currentSlide = 0;
 var slides = document.querySelectorAll(".testimonial-card");
 var dots = document.querySelectorAll(".dot");
@@ -353,6 +352,84 @@ function submitForm(e) {
     });
 }
 
+function submitApply(e) {
+  e.preventDefault();
+  var form = e.target;
+  var btn = form.querySelector('button[type="submit"]');
+  var successMsg = document.getElementById("applySuccess");
+  var name = document.getElementById("applyName").value.trim();
+  var email = document.getElementById("applyEmail").value.trim();
+  var program = document.getElementById("applyProgram").value.trim();
+  var education = document.getElementById("applyEducation").value.trim();
+  var message = document.getElementById("applyMessage").value.trim();
+  var valid =
+    validateField(document.getElementById("applyName")) &&
+    validateField(document.getElementById("applyEmail"));
+
+  if (!valid) {
+    showToast(
+      "Validation needed",
+      "Please complete the highlighted fields before submitting.",
+      "error",
+    );
+    if (successMsg) {
+      successMsg.textContent =
+        "Please complete the highlighted fields before submitting.";
+      successMsg.classList.remove("hidden");
+    }
+    return;
+  }
+
+  setButtonLoading(btn, true);
+  if (successMsg) {
+    successMsg.textContent = "Submitting your application securely...";
+    successMsg.classList.remove("hidden");
+  }
+
+  saveSubmission({
+    type: "enrollment",
+    full_name: name,
+    email: email,
+    program: program || "General enquiry",
+    education_level: education,
+    message: message,
+    created_at: new Date().toISOString(),
+  })
+    .then(function () {
+      showToast(
+        "Application received",
+        "Thanks! Our admissions team will follow up by email shortly.",
+        "success",
+      );
+      if (successMsg) {
+        successMsg.textContent =
+          "Thanks! Your application has been received. Our admissions team will follow up by email within 1-2 business days.";
+      }
+      setButtonLoading(btn, false, "Submit Application");
+      form.reset();
+      document.querySelectorAll(".form-group").forEach(function (group) {
+        group.classList.remove("success", "error");
+        var error = group.querySelector(".field-error");
+        if (error) error.textContent = "";
+      });
+      setTimeout(function () {
+        if (successMsg) successMsg.classList.add("hidden");
+      }, 5000);
+    })
+    .catch(function () {
+      showToast(
+        "Submission issue",
+        "Your application could not be stored live yet. Please email admissions directly for immediate follow-up.",
+        "error",
+      );
+      if (successMsg) {
+        successMsg.textContent =
+          "Your application could not be stored live yet. Please email admissions directly for immediate follow-up.";
+      }
+      setButtonLoading(btn, false, "Submit Application");
+    });
+}
+
 function openCourse(btn) {
   if (!modal || !modalTitle || !modalDesc) return;
   var card = btn.closest(".course-card");
@@ -416,33 +493,30 @@ function submitEnroll(e) {
   })
     .then(function () {
       showToast(
-        "Enrollment prepared",
-        "Application details saved. We opened the form for completion.",
+        "Application received",
+        "Thanks! Our admissions team will follow up by email shortly.",
         "success",
       );
       if (successMsg) {
         successMsg.textContent =
           "Application started for " +
           course +
-          ". We captured your details and opened the form for completion.";
+          ". Our admissions team will follow up by email within 1-2 business days.";
       }
-      window.open(GOOGLE_FORM_URL, "_blank", "noopener");
       setButtonLoading(btn, false, "Continue Application");
       form.reset();
     })
     .catch(function () {
       showToast(
-        "Enrollment prepared",
-        "Your request was saved locally. Please continue with the application form to finish.",
-        "info",
+        "Submission issue",
+        "Your application could not be stored live yet. Please email admissions directly for immediate follow-up.",
+        "error",
       );
       if (successMsg) {
         successMsg.textContent =
-          "Your request was prepared locally. Please continue with the application form to complete submission.";
+          "Your application could not be stored live yet. Please email admissions directly for immediate follow-up.";
       }
-      window.open(GOOGLE_FORM_URL, "_blank", "noopener");
       setButtonLoading(btn, false, "Continue Application");
-      form.reset();
     });
 }
 
@@ -514,6 +588,12 @@ function initForms() {
   if (enrollForm) {
     enrollForm.addEventListener("submit", submitEnroll);
     attachValidation(enrollForm);
+  }
+
+  var applyForm = document.getElementById("applyForm");
+  if (applyForm) {
+    applyForm.addEventListener("submit", submitApply);
+    attachValidation(applyForm);
   }
 }
 

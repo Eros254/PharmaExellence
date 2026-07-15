@@ -112,13 +112,13 @@
       <div class="hero-graphic" aria-hidden="true">
         <div class="hero-visual-card">
           <img
-            src="../Images/herobg.jpg"
+            src="Images/herobg.jpg"
             alt="Pharmaceutical training environment"
             loading="lazy"
           />
           <div class="hero-floating-card">
             <img
-              src="../Images/pharm1.jpg"
+              src="Images/pharm1.jpg"
               alt="Modern pharmacy learning"
               loading="lazy"
             />
@@ -133,7 +133,7 @@
           <div class="about-visual">
             <div class="about-card-main about-photo-card">
               <img
-                src="../Images/pharma1.jpg"
+                src="Images/pharma1.jpg"
                 alt="Pharmaceutical professional in a training setting"
                 loading="lazy"
               />
@@ -149,7 +149,7 @@
             </div>
             <div class="about-card-accent about-mini-card">
               <img
-                src="../Images/pharm1.jpg"
+                src="Images/pharm1.jpg"
                 alt="Healthcare learning environment"
                 loading="lazy"
               />
@@ -177,7 +177,7 @@
             </p>
             <div class="about-pillars">
               <div class="pillar">
-                <span class="pillar-icon"></span>
+                <span class="pillar-icon">🔭</span>
                 <div>
                   <strong>Vision</strong>
                   <p>
@@ -187,14 +187,14 @@
                 </div>
               </div>
               <div class="pillar">
-                <span class="pillar-icon"></span>
+                <span class="pillar-icon">🧭</span>
                 <div>
                   <strong>Motto</strong>
                   <p>Empowering the Future of Pharmacy.</p>
                 </div>
               </div>
               <div class="pillar">
-                <span class="pillar-icon"></span>
+                <span class="pillar-icon">🎯</span>
                 <div>
                   <strong>Commitment</strong>
                   <p>
@@ -363,7 +363,7 @@
             </div>
             <div class="pharmtech-visual">
               <img
-                src="../Images/pharmacie-du-futur-1024x576.jpg"
+                src="Images/pharmacie-du-futur-1024x576.jpg"
                 alt="Future-ready pharmacy learning experience"
                 loading="lazy"
               />
@@ -455,7 +455,7 @@
             </ul>
           </div>
           <div class="service-card">
-            <div class="service-icon"></div>
+            <div class="service-icon">🤝</div>
             <h3>Student Support</h3>
             <p>
               We support learners with career mentorship, internship placement
@@ -585,7 +585,7 @@
         </div>
         <div class="services-grid">
           <div class="service-card">
-            <div class="service-icon"></div>
+            <div class="service-icon">📚</div>
             <h3>New Course Launches</h3>
             <p>
               Follow upcoming certificate launches in regulatory affairs,
@@ -594,7 +594,7 @@
             <a class="service-link" href="blog.html">Read Blog →</a>
           </div>
           <div class="service-card">
-            <div class="service-icon"></div>
+            <div class="service-icon">🗓️</div>
             <h3>Events and Workshops</h3>
             <p>
               Healthcare Entrepreneurship Summit, Pharmaceutical Marketing
@@ -604,7 +604,7 @@
             <a class="service-link" href="blog.html">View Events →</a>
           </div>
           <div class="service-card">
-            <div class="service-icon"></div>
+            <div class="service-icon">🌐</div>
             <h3>Partners and Collaborations</h3>
             <p>
               We collaborate with pharmaceutical companies, hospitals, clinics,
@@ -619,32 +619,77 @@
 
     <section id="apply" class="academy">
       <div class="container">
-        <div class="apply-panel">
-          <div>
-            <div class="section-label">Apply Online</div>
-            <h2 class="section-title">Application Form</h2>
-            <p class="about-text">
-              The academy application should be connected to your live Google
-              Form. Once the Google Form URL is available, replace the
-              placeholder link in this section and in the enrollment modal.
-            </p>
-            <ul class="service-list">
-              <li>Name and email address</li>
-              <li>Level of education, including diploma option</li>
-              <li>
-                Program of interest, starting with Certificate in Regulatory
-                Affairs
-              </li>
-              <li>Professional background and preferred study mode</li>
-            </ul>
-          </div>
-          <a
-            class="btn-primary apply-button"
-            href="https://forms.google.com/"
-            target="_blank"
-            rel="noopener"
-            >Open Google Form</a
-          >
+        <div class="section-header">
+          <div class="section-label">Apply Online</div>
+          <h2 class="section-title">
+            Start Your <span class="highlight-green">Application</span>
+          </h2>
+          <p class="section-sub">
+            Tell us about yourself and the program you're interested in. Our
+            admissions team will follow up by email to guide you through the
+            next steps.
+          </p>
+        </div>
+        <div class="contact-form-wrap">
+          <form id="applyForm" class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="applyName">Full Name</label
+                ><input
+                  type="text"
+                  id="applyName"
+                  placeholder="Your full name"
+                  required
+                />
+                <div class="field-error" aria-live="polite"></div>
+              </div>
+              <div class="form-group">
+                <label for="applyEmail">Email Address</label
+                ><input
+                  type="email"
+                  id="applyEmail"
+                  placeholder="you@example.com"
+                  required
+                />
+                <div class="field-error" aria-live="polite"></div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="applyProgram">Program of Interest</label>
+                <select id="applyProgram">
+                  <option value="">Select a program...</option>
+                  <option>Certificate in Regulatory Affairs</option>
+                  <option>Certificate in Pharmacovigilance</option>
+                  <option>Pharmaceutical Supply Chain Management</option>
+                  <option>Pharmaceutical Marketing</option>
+                  <option>Pharmaceutical Digital Marketing</option>
+                  <option>Private Healthcare Business Programs</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="applyEducation">Level of Education</label
+                ><input
+                  type="text"
+                  id="applyEducation"
+                  placeholder="Diploma / Degree / Other"
+                />
+                <div class="field-error" aria-live="polite"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="applyMessage">Anything else we should know?</label
+              ><textarea
+                id="applyMessage"
+                rows="3"
+                placeholder="Professional background, preferred study mode, etc. (optional)"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn-primary full-width">
+              Submit Application
+            </button>
+            <div id="applySuccess" class="form-success hidden"></div>
+          </form>
         </div>
       </div>
     </section>
@@ -744,11 +789,7 @@
             </div>
           </div>
           <div class="contact-form-wrap">
-            <form
-              id="contactForm"
-              class="contact-form"
-              onsubmit="submitForm(event)"
-            >
+            <form id="contactForm" class="contact-form">
               <div class="form-row">
                 <div class="form-group">
                   <label for="name">Full Name</label
@@ -779,6 +820,7 @@
                   <option>Certificate in Pharmacovigilance</option>
                   <option>Pharmaceutical Supply Chain Management</option>
                   <option>Pharmaceutical Marketing</option>
+                  <option>Pharmaceutical Digital Marketing</option>
                   <option>Private Healthcare Business Programs</option>
                 </select>
               </div>
@@ -872,7 +914,7 @@
         <h3 id="modalTitle">Enroll in Program</h3>
         <p id="modalDesc">Fill in your details to enroll in this program.</p>
         <div class="price-pill" id="modalPrice">Price shown here</div>
-        <form onsubmit="submitEnroll(event)">
+        <form>
           <div class="form-group">
             <label>Full Name</label
             ><input type="text" placeholder="Your full name" required />

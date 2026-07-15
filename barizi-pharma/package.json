@@ -7,10 +7,15 @@
     "start": "node academy-server.js",
     "dev": "nodemon academy-server.js"
   },
-  "keywords": ["pharma", "paystack", "express"],
+  "keywords": [
+    "pharma",
+    "paystack",
+    "express"
+  ],
   "author": "Pharma Excellence Academy",
   "license": "ISC",
   "dependencies": {
+    "@supabase/supabase-js": "^2.110.5",
     "axios": "^1.15.2",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",

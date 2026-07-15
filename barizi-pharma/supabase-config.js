@@ -1,6 +1,6 @@
 window.SUPABASE_CONFIG = {
-  url: "https://YOUR_PROJECT_REF.supabase.co",
-  anonKey: "YOUR_ANON_KEY",
+  url: "https://rlpmyrywetarihyepnga.supabase.co",
+  anonKey: "sb_publishable_5gHR8SxNJiEEX7C2X4mtvA_MWOYhWX8",
   tableName: "submissions",
 };
 
