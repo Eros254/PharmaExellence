@@ -11,13 +11,15 @@ create table if not exists public.submissions (
 
 alter table public.submissions enable row level security;
 
-create policy if not exists "Allow inserts for anonymous users"
+drop policy if exists "Allow inserts for anonymous users" on public.submissions;
+create policy "Allow inserts for anonymous users"
   on public.submissions
   for insert
   to anon
   with check (true);
 
-create policy if not exists "Allow reads for authenticated users"
+drop policy if exists "Allow reads for authenticated users" on public.submissions;
+create policy "Allow reads for authenticated users"
   on public.submissions
   for select
   to authenticated
