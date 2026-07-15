@@ -775,11 +775,9 @@ nav#navbar.scrolled {
 }
 
 .info-panel,
-.apply-panel,
 .faq-item,
 .profile-card,
-.post-card,
-.editorial-panel {
+.post-card {
   background: var(--white);
   border: 1px solid var(--blue-light);
   border-radius: var(--radius);
@@ -793,31 +791,13 @@ nav#navbar.scrolled {
 .info-panel h3,
 .faq-item h4,
 .profile-card h3,
-.post-card h3,
-.editorial-panel h3 {
+.post-card h3 {
   font-family: var(--font-head);
   color: var(--text-dark);
 }
 
 .info-panel h3 {
   margin-bottom: 14px;
-}
-
-.apply-panel {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 32px;
-  align-items: center;
-  padding: 42px;
-  background: linear-gradient(135deg, var(--white) 0%, var(--blue-light) 100%);
-}
-
-.apply-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 190px;
-  text-align: center;
 }
 
 .faq-grid {
@@ -894,8 +874,7 @@ nav#navbar.scrolled {
 }
 
 .profile-card p,
-.post-card p,
-.editorial-panel p {
+.post-card p {
   color: var(--text-mid);
   font-size: 0.92rem;
   line-height: 1.7;
@@ -915,11 +894,6 @@ nav#navbar.scrolled {
   padding: 5px 10px;
   font-size: 0.78rem;
   font-weight: 700;
-}
-
-.editorial-panel {
-  padding: 38px;
-  background: var(--off-white);
 }
 
 /* ===========================
@@ -1630,7 +1604,6 @@ nav#navbar.scrolled {
 .btn-primary,
 .btn-outline,
 .btn-course,
-.apply-button,
 .cta-nav,
 .modal-close,
 .dot,
@@ -1642,7 +1615,6 @@ nav#navbar.scrolled {
 .btn-primary:active,
 .btn-outline:active,
 .btn-course:active,
-.apply-button:active,
 .cta-nav:active,
 .modal-close:active,
 .back-to-top:active {
@@ -2120,8 +2092,7 @@ nav#navbar.scrolled {
   .faq-grid,
   .faculty-grid,
   .posts-grid,
-  .info-grid,
-  .apply-panel {
+  .info-grid {
     grid-template-columns: 1fr;
   }
   .contact-grid {
@@ -2146,11 +2117,6 @@ nav#navbar.scrolled {
   .modal-box {
     padding: 28px 22px;
   }
-  .apply-panel,
-  .editorial-panel {
-    padding: 28px 20px;
-  }
-
   .footer {
     padding: 48px 18px 0;
   }
@@ -2194,8 +2160,7 @@ nav#navbar.scrolled {
   }
 
   .btn-primary,
-  .btn-outline,
-  .apply-button {
+  .btn-outline {
     width: 100%;
     text-align: center;
     justify-content: center;

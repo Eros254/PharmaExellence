@@ -246,6 +246,17 @@ function getSupabaseClient() {
   return window.__skillexSupabaseClient;
 }
 
+function saveToLocalStorage(payload) {
+  var stored = JSON.parse(
+    localStorage.getItem("pharma-excellence-local-submissions") || "[]",
+  );
+  stored.push(payload);
+  localStorage.setItem(
+    "pharma-excellence-local-submissions",
+    JSON.stringify(stored),
+  );
+}
+
 function saveSubmission(payload) {
   var client = getSupabaseClient();
   if (client) {
@@ -255,39 +266,88 @@ function saveSubmission(payload) {
           "submissions",
       )
       .insert([payload])
-      .select()
       .then(function (response) {
         if (response.error) {
           throw response.error;
         }
         return { success: true, mode: "supabase" };
+      })
+      .catch(function (err) {
+        // Keep a local backup so the submission isn't lost if the live
+        // insert fails (RLS misconfig, network drop, etc.), then surface
+        // the original error so the caller still shows the failure state.
+        saveToLocalStorage(payload);
+        throw err;
       });
   }
 
-  var stored = JSON.parse(
-    localStorage.getItem("pharma-excellence-local-submissions") || "[]",
-  );
-  stored.push(payload);
-  localStorage.setItem(
-    "pharma-excellence-local-submissions",
-    JSON.stringify(stored),
-  );
+  saveToLocalStorage(payload);
   return Promise.resolve({ success: true, mode: "local-storage" });
+}
+
+function resetFormGroups(scope) {
+  scope.querySelectorAll(".form-group").forEach(function (group) {
+    group.classList.remove("success", "error");
+    var error = group.querySelector(".field-error");
+    if (error) error.textContent = "";
+  });
+}
+
+// Shared then/catch/finally sequencing for every submission form. Guards
+// against double submission (e.g. a form accidentally bound twice) via
+// form.dataset.submitting, and centralizes the loading/toast/reset/timeout
+// choreography so each form only supplies its own copy and payload.
+function handleFormSubmission(config) {
+  var form = config.form;
+  if (form.dataset.submitting === "1") return;
+  form.dataset.submitting = "1";
+
+  var btn = form.querySelector('button[type="submit"]');
+  var successMsg = config.successMsg;
+
+  setButtonLoading(btn, true);
+  if (successMsg) {
+    successMsg.textContent = config.savingText;
+    successMsg.classList.remove("hidden");
+  }
+
+  saveSubmission(config.payload)
+    .then(function () {
+      showToast(config.successToastTitle, config.successToastMsg, "success");
+      if (successMsg) {
+        successMsg.textContent = config.successText;
+      }
+      form.reset();
+      resetFormGroups(form);
+      setTimeout(function () {
+        if (successMsg) successMsg.classList.add("hidden");
+      }, 5000);
+    })
+    .catch(function (err) {
+      console.error(config.errorLogLabel, err);
+      showToast("Submission issue", config.errorText, "error");
+      if (successMsg) {
+        successMsg.textContent = config.errorText;
+      }
+    })
+    .finally(function () {
+      form.dataset.submitting = "";
+      setButtonLoading(btn, false, config.resetLabel);
+    });
 }
 
 function submitForm(e) {
   e.preventDefault();
   var form = e.target;
-  var btn = form.querySelector('button[type="submit"]');
   var successMsg = document.getElementById("formSuccess");
-  var name = document.getElementById("name").value.trim();
-  var email = document.getElementById("email").value.trim();
-  var service = document.getElementById("service").value.trim();
-  var message = document.getElementById("message").value.trim();
+  var nameField = document.getElementById("name");
+  var emailField = document.getElementById("email");
+  var serviceField = document.getElementById("service");
+  var messageField = document.getElementById("message");
   var valid =
-    validateField(document.getElementById("name")) &&
-    validateField(document.getElementById("email")) &&
-    validateField(document.getElementById("message"));
+    validateField(nameField) &&
+    validateField(emailField) &&
+    validateField(messageField);
 
   if (!valid) {
     showToast(
@@ -303,68 +363,42 @@ function submitForm(e) {
     return;
   }
 
-  setButtonLoading(btn, true);
-  if (successMsg) {
-    successMsg.textContent = "Saving your enquiry securely...";
-    successMsg.classList.remove("hidden");
-  }
+  var errorText =
+    "Your enquiry could not be stored live yet. Please email admissions directly for immediate follow-up.";
 
-  saveSubmission({
-    type: "contact",
-    full_name: name,
-    email: email,
-    program: service || "General enquiry",
-    message: message,
-    created_at: new Date().toISOString(),
-  })
-    .then(function () {
-      showToast(
-        "Request received",
-        "Thanks! Your enquiry has been captured and we will follow up shortly.",
-        "success",
-      );
-      if (successMsg) {
-        successMsg.textContent =
-          "Thanks! Your enquiry has been captured and we will follow up shortly.";
-      }
-      setButtonLoading(btn, false, "Send Message");
-      form.reset();
-      document.querySelectorAll(".form-group").forEach(function (group) {
-        group.classList.remove("success", "error");
-        var error = group.querySelector(".field-error");
-        if (error) error.textContent = "";
-      });
-      setTimeout(function () {
-        if (successMsg) successMsg.classList.add("hidden");
-      }, 5000);
-    })
-    .catch(function () {
-      showToast(
-        "Submission issue",
-        "Your enquiry could not be stored live yet. Please email admissions directly for immediate follow-up.",
-        "error",
-      );
-      if (successMsg) {
-        successMsg.textContent =
-          "Your enquiry could not be stored live yet. Please email admissions directly for immediate follow-up.";
-      }
-      setButtonLoading(btn, false, "Send Message");
-    });
+  handleFormSubmission({
+    form: form,
+    successMsg: successMsg,
+    savingText: "Saving your enquiry securely...",
+    successToastTitle: "Request received",
+    successToastMsg:
+      "Thanks! Your enquiry has been captured and we will follow up shortly.",
+    successText:
+      "Thanks! Your enquiry has been captured and we will follow up shortly.",
+    errorText: errorText,
+    errorLogLabel: "Contact form submission failed:",
+    resetLabel: "Send Message",
+    payload: {
+      type: "contact",
+      full_name: nameField.value.trim(),
+      email: emailField.value.trim(),
+      program: serviceField.value.trim() || "General enquiry",
+      message: messageField.value.trim(),
+      created_at: new Date().toISOString(),
+    },
+  });
 }
 
 function submitApply(e) {
   e.preventDefault();
   var form = e.target;
-  var btn = form.querySelector('button[type="submit"]');
   var successMsg = document.getElementById("applySuccess");
-  var name = document.getElementById("applyName").value.trim();
-  var email = document.getElementById("applyEmail").value.trim();
-  var program = document.getElementById("applyProgram").value.trim();
-  var education = document.getElementById("applyEducation").value.trim();
-  var message = document.getElementById("applyMessage").value.trim();
-  var valid =
-    validateField(document.getElementById("applyName")) &&
-    validateField(document.getElementById("applyEmail"));
+  var nameField = document.getElementById("applyName");
+  var emailField = document.getElementById("applyEmail");
+  var programField = document.getElementById("applyProgram");
+  var educationField = document.getElementById("applyEducation");
+  var messageField = document.getElementById("applyMessage");
+  var valid = validateField(nameField) && validateField(emailField);
 
   if (!valid) {
     showToast(
@@ -380,54 +414,31 @@ function submitApply(e) {
     return;
   }
 
-  setButtonLoading(btn, true);
-  if (successMsg) {
-    successMsg.textContent = "Submitting your application securely...";
-    successMsg.classList.remove("hidden");
-  }
+  var errorText =
+    "Your application could not be stored live yet. Please email admissions directly for immediate follow-up.";
 
-  saveSubmission({
-    type: "enrollment",
-    full_name: name,
-    email: email,
-    program: program || "General enquiry",
-    education_level: education,
-    message: message,
-    created_at: new Date().toISOString(),
-  })
-    .then(function () {
-      showToast(
-        "Application received",
-        "Thanks! Our admissions team will follow up by email shortly.",
-        "success",
-      );
-      if (successMsg) {
-        successMsg.textContent =
-          "Thanks! Your application has been received. Our admissions team will follow up by email within 1-2 business days.";
-      }
-      setButtonLoading(btn, false, "Submit Application");
-      form.reset();
-      document.querySelectorAll(".form-group").forEach(function (group) {
-        group.classList.remove("success", "error");
-        var error = group.querySelector(".field-error");
-        if (error) error.textContent = "";
-      });
-      setTimeout(function () {
-        if (successMsg) successMsg.classList.add("hidden");
-      }, 5000);
-    })
-    .catch(function () {
-      showToast(
-        "Submission issue",
-        "Your application could not be stored live yet. Please email admissions directly for immediate follow-up.",
-        "error",
-      );
-      if (successMsg) {
-        successMsg.textContent =
-          "Your application could not be stored live yet. Please email admissions directly for immediate follow-up.";
-      }
-      setButtonLoading(btn, false, "Submit Application");
-    });
+  handleFormSubmission({
+    form: form,
+    successMsg: successMsg,
+    savingText: "Submitting your application securely...",
+    successToastTitle: "Application received",
+    successToastMsg:
+      "Thanks! Our admissions team will follow up by email shortly.",
+    successText:
+      "Thanks! Your application has been received. Our admissions team will follow up by email within 1-2 business days.",
+    errorText: errorText,
+    errorLogLabel: "Application form submission failed:",
+    resetLabel: "Submit Application",
+    payload: {
+      type: "enrollment",
+      full_name: nameField.value.trim(),
+      email: emailField.value.trim(),
+      program: programField.value.trim() || "General enquiry",
+      education_level: educationField.value.trim(),
+      message: messageField.value.trim(),
+      created_at: new Date().toISOString(),
+    },
+  });
 }
 
 function openCourse(btn) {
@@ -454,14 +465,13 @@ function closeModal() {
 function submitEnroll(e) {
   e.preventDefault();
   var form = e.target;
-  var btn = form.querySelector('button[type="submit"]');
   var successMsg = document.getElementById("enrollSuccess");
   var inputs = form.querySelectorAll("input");
-  var name = inputs[0].value.trim();
-  var email = inputs[1].value.trim();
+  var nameInput = inputs[0];
+  var emailInput = inputs[1];
+  var educationInput = inputs[2];
   var course = modalTitle.textContent.trim();
-  var education = inputs[2] ? inputs[2].value.trim() : "";
-  var valid = validateField(inputs[0]) && validateField(inputs[1]);
+  var valid = validateField(nameInput) && validateField(emailInput);
 
   if (!valid) {
     showToast(
@@ -477,47 +487,30 @@ function submitEnroll(e) {
     return;
   }
 
-  setButtonLoading(btn, true);
-  if (successMsg) {
-    successMsg.textContent = "Saving your enrollment request...";
-    successMsg.classList.remove("hidden");
-  }
-
-  saveSubmission({
-    type: "enrollment",
-    full_name: name,
-    email: email,
-    program: course,
-    education_level: education,
-    created_at: new Date().toISOString(),
-  })
-    .then(function () {
-      showToast(
-        "Application received",
-        "Thanks! Our admissions team will follow up by email shortly.",
-        "success",
-      );
-      if (successMsg) {
-        successMsg.textContent =
-          "Application started for " +
-          course +
-          ". Our admissions team will follow up by email within 1-2 business days.";
-      }
-      setButtonLoading(btn, false, "Continue Application");
-      form.reset();
-    })
-    .catch(function () {
-      showToast(
-        "Submission issue",
-        "Your application could not be stored live yet. Please email admissions directly for immediate follow-up.",
-        "error",
-      );
-      if (successMsg) {
-        successMsg.textContent =
-          "Your application could not be stored live yet. Please email admissions directly for immediate follow-up.";
-      }
-      setButtonLoading(btn, false, "Continue Application");
-    });
+  handleFormSubmission({
+    form: form,
+    successMsg: successMsg,
+    savingText: "Saving your enrollment request...",
+    successToastTitle: "Application received",
+    successToastMsg:
+      "Thanks! Our admissions team will follow up by email shortly.",
+    successText:
+      "Application started for " +
+      course +
+      ". Our admissions team will follow up by email within 1-2 business days.",
+    errorText:
+      "Your application could not be stored live yet. Please email admissions directly for immediate follow-up.",
+    errorLogLabel: "Application form submission failed:",
+    resetLabel: "Continue Application",
+    payload: {
+      type: "enrollment",
+      full_name: nameInput.value.trim(),
+      email: emailInput.value.trim(),
+      program: course,
+      education_level: educationInput ? educationInput.value.trim() : "",
+      created_at: new Date().toISOString(),
+    },
+  });
 }
 
 function updateActiveNav() {
@@ -577,7 +570,28 @@ function initNavigation() {
   });
 }
 
+var PROGRAM_OPTIONS = [
+  "Certificate in Regulatory Affairs",
+  "Certificate in Pharmacovigilance",
+  "Pharmaceutical Supply Chain Management",
+  "Pharmaceutical Marketing",
+  "Pharmaceutical Digital Marketing",
+  "Private Healthcare Business Programs",
+];
+
+function populateProgramSelect(select) {
+  if (!select) return;
+  PROGRAM_OPTIONS.forEach(function (program) {
+    var option = document.createElement("option");
+    option.textContent = program;
+    select.appendChild(option);
+  });
+}
+
 function initForms() {
+  populateProgramSelect(document.getElementById("service"));
+  populateProgramSelect(document.getElementById("applyProgram"));
+
   var contactForm = document.getElementById("contactForm");
   if (contactForm) {
     contactForm.addEventListener("submit", submitForm);
