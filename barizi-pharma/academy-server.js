@@ -3,21 +3,23 @@
 //  Node.js + Express backend with Paystack integration
 //  Run: node server.js
 // ============================================================
-const { createClient } = require("@supabase/supabase-js");
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SECRET_KEY,
-);
 const express = require("express");
 const cors = require("cors");
 const Paystack = require("paystack");
 const crypto = require("crypto");
 const path = require("path");
 require("dotenv").config();
+const { createClient } = require("@supabase/supabase-js");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3009;
 const paystack = Paystack(process.env.PAYSTACK_SECRET_KEY);
+const supabaseKey =
+  process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SECRET_KEY;
+const supabase =
+  process.env.SUPABASE_URL && supabaseKey
+    ? createClient(process.env.SUPABASE_URL, supabaseKey)
+    : null;
 
 // ============================================================
 //  MIDDLEWARE
@@ -55,8 +57,11 @@ app.use(
   }),
 );
 
-// Serve frontend static files (academy.html, academy.css, academy.js)
-app.use(express.static(path.join(__dirname, "..", "academy.html")));
+// Serve frontend static files from the application directory.
+app.use(express.static(__dirname));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
 
 // ============================================================
 //  HELPERS
@@ -120,7 +125,7 @@ app.post("/api/payment/initialize", async (req, res) => {
   }
 
   const reference = generateRef(type === "consulting" ? "CONSULT" : "COURSE");
-  const callbackUrl = `${process.env.FRONTEND_URL || "http://localhost:3000"}/payment-success.html`;
+  const callbackUrl = `${process.env.FRONTEND_URL || "http://localhost:3009"}/payment-success.html`;
 
   try {
     const response = await paystack.transaction.initialize({
@@ -339,7 +344,7 @@ app.post("/api/submissions", async (req, res) => {
 // ============================================================
 //  START SERVER
 // ============================================================
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log("");
   console.log("  ╔══════════════════════════════════════════╗");
   console.log(`  ║   Pharma Excellence Academy Server       ║`);
@@ -356,4 +361,9 @@ app.listen(PORT, () => {
   console.log("  POST /webhook/paystack");
   console.log("  GET  /api/transactions");
   console.log("");
+});
+
+server.on("error", (err) => {
+  console.error("[SERVER ERROR]", err.message);
+  process.exit(1);
 });
