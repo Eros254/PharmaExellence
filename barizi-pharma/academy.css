@@ -1893,8 +1893,30 @@ nav#navbar.scrolled {
     padding-right: 0;
   }
 
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
   .hero-graphic {
-    display: none;
+    display: block;
+    position: static;
+    transform: none;
+    width: 100%;
+    max-width: 560px;
+    margin: 56px auto 0;
+    animation: none;
+  }
+
+  .hero-visual-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero-floating-card {
+    right: 14px;
+    bottom: -18px;
   }
   .services-grid {
     grid-template-columns: 1fr 1fr;
