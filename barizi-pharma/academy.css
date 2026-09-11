@@ -525,7 +525,16 @@ nav#navbar.scrolled {
    =========================== */
 .about {
   padding: 96px 24px;
-  background: var(--white);
+  background: linear-gradient(
+      to right,
+      var(--white) 0%,
+      rgba(255, 255, 255, 0.72) 50%,
+      rgba(255, 255, 255, 0.45) 100%
+    ),
+    url("Images/herobg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .about-grid {
@@ -2023,7 +2032,7 @@ nav#navbar.scrolled {
         rgba(255, 255, 255, 0.72),
         rgba(240, 248, 250, 0.86)
       ),
-      url("Images/herobg.jpg");
+    url("Images/pharm1.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
