@@ -1,112 +1,290 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Faculty | Skillex Academy</title>
-  <meta name="description" content="Meet the Skillex Academy faculty team supporting pharmaceutical training, healthcare entrepreneurship, regulatory affairs, and clinical practice development." />
-  <link rel="stylesheet" href="academy.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet" />
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div class="nav-overlay" id="navOverlay" hidden></div>
-  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-  <nav id="navbar">
-    <div class="nav-container">
-      <a href="index.html#home" class="logo">
-        <span class="logo-icon">✚</span>
-        <span class="logo-text">Skillex <span class="logo-accent">Ltd</span></span>
-      </a>
-      <ul class="nav-links" id="navLinks">
-        <button class="drawer-close" id="drawerClose" type="button" aria-label="Close menu">×</button>
-        <li><a href="index.html#home">Home</a></li>
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#programs">Programs</a></li>
-        <li><a href="faculty.html">Faculty</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-      </ul>
-      <a class="cta-nav" href="index.html#apply">Apply Now</a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faculty | Skillex Academy</title>
+    <meta
+      name="description"
+      content="Meet the Skillex Academy faculty team of industry experts in regulatory affairs, pharmacovigilance, supply chain, pharmaceutical marketing, digital health, and clinical practice."
+    />
+    <meta name="theme-color" content="#1aa6b7" />
+    <link rel="stylesheet" href="academy.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body data-page="faculty">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="nav-overlay" id="navOverlay" hidden></div>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-  <section class="page-hero" id="main">
-    <div class="container">
-      <div class="hero-tag">Faculty and Mentors</div>
-      <h1 class="hero-title">Industry Experts Guiding <span class="highlight-green">Practical Pharmacy Training</span></h1>
-      <p class="hero-subtitle">Faculty profiles are structured for trainers in regulatory affairs, pharmacovigilance, supply chain, pharmaceutical marketing, digital health, entrepreneurship, and clinical practice.</p>
-    </div>
-  </section>
-
-  <section class="academy">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Faculty Members</div>
-        <h2 class="section-title">Trainer <span class="highlight">Profiles</span></h2>
-        <p class="section-sub">Each mentor brings hands-on industry experience to the classroom, connecting theory to real pharmaceutical and healthcare practice.</p>
+    <nav id="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">✚</span>
+          <span class="logo-text"
+            >Skillex <span class="logo-accent">Ltd</span></span
+          >
+        </a>
+        <ul class="nav-links" id="navLinks">
+          <button
+            class="drawer-close"
+            id="drawerClose"
+            type="button"
+            aria-label="Close menu"
+          >
+            ×
+          </button>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="faculty.html">Faculty</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a class="cta-nav" href="programs.html">Apply Now</a>
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="navLinks"
+        >
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <div class="faculty-grid">
-        <article class="profile-card">
-          <div class="profile-avatar">RA</div>
-          <h3>Regulatory Affairs Lead</h3>
-          <div class="profile-role">Regulatory Affairs and Compliance</div>
-          <p>Leads practical training in dossier compilation, product registration, variations, GMP applications, trade permits, and regulatory report writing.</p>
-          <div class="profile-tags"><span>Dossiers</span><span>GMP</span><span>Registration</span></div>
-        </article>
-        <article class="profile-card">
-          <div class="profile-avatar">PV</div>
-          <h3>Pharmacovigilance Trainer</h3>
-          <div class="profile-role">Medicine Safety and Reporting</div>
-          <p>Supports learners in adverse event reporting, safety documentation, practical vigilance systems, and patient-centered medicine safety.</p>
-          <div class="profile-tags"><span>Drug Safety</span><span>Signals</span><span>Reporting</span></div>
-        </article>
-        <article class="profile-card">
-          <div class="profile-avatar">SC</div>
-          <h3>Supply Chain Specialist</h3>
-          <div class="profile-role">Pharmaceutical Supply and Distribution</div>
-          <p>Teaches procurement, inventory control, storage, distribution, quality assurance, and compliant movement of healthcare products.</p>
-          <div class="profile-tags"><span>Procurement</span><span>Distribution</span><span>QA</span></div>
-        </article>
-        <article class="profile-card">
-          <div class="profile-avatar">PM</div>
-          <h3>Pharmaceutical Marketing Coach</h3>
-          <div class="profile-role">Medical Representatives Training</div>
-          <p>Builds learner capability in ethical product promotion, territory planning, customer engagement, medical communication, and field reporting.</p>
-          <div class="profile-tags"><span>Marketing</span><span>Sales</span><span>Ethics</span></div>
-        </article>
-        <article class="profile-card">
-          <div class="profile-avatar">DM</div>
-          <h3>Digital Marketing Facilitator</h3>
-          <div class="profile-role">Healthcare Digital Communication</div>
-          <p>Guides learners on compliant digital content, online brand visibility, campaign planning, analytics, and healthcare audience education.</p>
-          <div class="profile-tags"><span>Content</span><span>Analytics</span><span>Campaigns</span></div>
-        </article>
-        <article class="profile-card">
-          <div class="profile-avatar">HE</div>
-          <h3>Healthcare Entrepreneurship Mentor</h3>
-          <div class="profile-role">Startups and Private Healthcare Business</div>
-          <p>Mentors learners in pharmaceutical business management, medical supplies distribution, importation, startup planning, and responsible growth.</p>
-          <div class="profile-tags"><span>Startups</span><span>Business</span><span>Mentorship</span></div>
-        </article>
-      </div>
-    </div>
-  </section>
+    </nav>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-bottom">
-        <p>&copy; 2026 Skillex Academy. All rights reserved.</p>
-        <p>Empowering the Future of Pharmacy</p>
+    <section class="page-hero" id="main">
+      <div class="container">
+        <div class="hero-tag">Faculty and Mentors</div>
+        <h1 class="hero-title">
+          Industry Experts Guiding
+          <span class="highlight-green">Practical Pharmacy Training</span>
+        </h1>
+        <p class="hero-subtitle">
+          Every faculty member brings hands-on industry experience to the
+          classroom, connecting theory to real pharmaceutical and healthcare
+          practice across regulatory affairs, pharmacovigilance, supply chain,
+          marketing, digital health, entrepreneurship, and clinical practice.
+        </p>
       </div>
-    </div>
-  </footer>
+    </section>
 
-  <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
-  <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
-  <script src="academy.js"></script>
-</body>
+    <section class="academy">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Faculty Members</div>
+          <h2 class="section-title">
+            Trainer <span class="highlight">Profiles</span>
+          </h2>
+          <p class="section-sub">
+            Each mentor is selected for their deep industry expertise and
+            commitment to developing the next generation of pharmaceutical
+            professionals.
+          </p>
+        </div>
+        <div class="faculty-grid">
+          <article class="profile-card">
+            <div class="profile-avatar">RA</div>
+            <h3>Regulatory Affairs Lead</h3>
+            <div class="profile-role">
+              Regulatory Affairs and Compliance
+            </div>
+            <p>
+              Leads practical training in dossier compilation, product
+              registration, variations, GMP applications, trade permits, and
+              regulatory report writing. Brings over a decade of regulatory
+              experience across African and international markets.
+            </p>
+            <div class="profile-tags">
+              <span>Dossiers</span><span>GMP</span><span>Registration</span>
+            </div>
+          </article>
+          <article class="profile-card">
+            <div class="profile-avatar">PV</div>
+            <h3>Pharmacovigilance Trainer</h3>
+            <div class="profile-role">Medicine Safety and Reporting</div>
+            <p>
+              Supports learners in adverse event reporting, safety
+              documentation, practical vigilance systems, and patient-centered
+              medicine safety. Has trained pharmacovigilance teams at hospitals
+              and regulatory authorities.
+            </p>
+            <div class="profile-tags">
+              <span>Drug Safety</span><span>Signals</span
+              ><span>Reporting</span>
+            </div>
+          </article>
+          <article class="profile-card">
+            <div class="profile-avatar">SC</div>
+            <h3>Supply Chain Specialist</h3>
+            <div class="profile-role">
+              Pharmaceutical Supply and Distribution
+            </div>
+            <p>
+              Teaches procurement, inventory control, storage, distribution,
+              quality assurance, and compliant movement of healthcare products.
+              Has managed supply chain operations for major pharmaceutical
+              distributors.
+            </p>
+            <div class="profile-tags">
+              <span>Procurement</span><span>Distribution</span><span>QA</span>
+            </div>
+          </article>
+          <article class="profile-card">
+            <div class="profile-avatar">PM</div>
+            <h3>Pharmaceutical Marketing Coach</h3>
+            <div class="profile-role">Medical Representatives Training</div>
+            <p>
+              Builds learner capability in ethical product promotion, territory
+              planning, customer engagement, medical communication, and field
+              reporting. Previously led sales training at top pharmaceutical
+              companies.
+            </p>
+            <div class="profile-tags">
+              <span>Marketing</span><span>Sales</span><span>Ethics</span>
+            </div>
+          </article>
+          <article class="profile-card">
+            <div class="profile-avatar">DM</div>
+            <h3>Digital Marketing Facilitator</h3>
+            <div class="profile-role">Healthcare Digital Communication</div>
+            <p>
+              Guides learners on compliant digital content, online brand
+              visibility, campaign planning, analytics, and healthcare audience
+              education. Specializes in pharmaceutical digital compliance.
+            </p>
+            <div class="profile-tags">
+              <span>Content</span><span>Analytics</span><span>Campaigns</span>
+            </div>
+          </article>
+          <article class="profile-card">
+            <div class="profile-avatar">HE</div>
+            <h3>Healthcare Entrepreneurship Mentor</h3>
+            <div class="profile-role">Startups and Private Healthcare Business</div>
+            <p>
+              Mentors learners in pharmaceutical business management, medical
+              supplies distribution, importation, startup planning, and
+              responsible growth. Has launched and scaled multiple healthcare
+              ventures.
+            </p>
+            <div class="profile-tags">
+              <span>Startups</span><span>Business</span><span>Mentorship</span>
+            </div>
+          </article>
+          <article class="profile-card">
+            <div class="profile-avatar">CP</div>
+            <h3>Clinical Practice Trainer</h3>
+            <div class="profile-role">Clinical Pharmacy and Patient Care</div>
+            <p>
+              Leads training in clinical pharmacy practice, patient counseling,
+              medication therapy management, and hospital pharmacy operations.
+              Brings years of hospital and community pharmacy experience.
+            </p>
+            <div class="profile-tags">
+              <span>Clinical</span><span>Patient Care</span
+              ><span>Hospital</span>
+            </div>
+          </article>
+          <article class="profile-card">
+            <div class="profile-avatar">QA</div>
+            <h3>Quality Assurance Mentor</h3>
+            <div class="profile-role">Pharmaceutical Quality Systems</div>
+            <p>
+              Supports learners in quality management systems, Good
+              Manufacturing Practice (GMP), Good Distribution Practice (GDP),
+              audit preparation, and pharmaceutical quality standards.
+            </p>
+            <div class="profile-tags">
+              <span>GMP</span><span>GDP</span><span>Audits</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container">
+        <h2>Want to learn from industry experts?</h2>
+        <p>
+          Explore our programs and join a community of pharmaceutical
+          professionals building practical skills for real-world practice.
+        </p>
+        <div class="hero-buttons">
+          <a class="btn-primary" href="programs.html">Explore Programs</a>
+          <a class="btn-outline" href="contact.html">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="logo">
+              <span class="logo-icon">✚</span
+              ><span class="logo-text"
+                >Skillex <span class="logo-accent">Ltd</span></span
+              >
+            </div>
+            <p>
+              Professional pharmacy training in regulatory affairs,
+              pharmacovigilance, supply chain, marketing, entrepreneurship, and
+              clinical practice development.
+            </p>
+          </div>
+          <div class="footer-links">
+            <h5>Academy</h5>
+            <ul>
+              <li><a href="programs.html">Programs</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="programs.html">Apply Online</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h5>Pages</h5>
+            <ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="faculty.html">Faculty</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h5>Follow Us</h5>
+            <ul>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/pharma-excellence-academy-consulting-4463583b3/"
+                  >LinkedIn</a
+                >
+              </li>
+              <li><a href="#">TikTok</a></li>
+              <li><a href="#">YouTube</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Skillex Academy. All rights reserved.</p>
+          <p>Empowering the Future of Pharmacy</p>
+        </div>
+      </div>
+    </footer>
+
+    <div
+      id="toastContainer"
+      class="toast-container"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+      ↑
+    </button>
+    <script src="academy.js"></script>
+  </body>
 </html>

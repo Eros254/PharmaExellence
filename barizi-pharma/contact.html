@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Skillex Academy</title>
+    <meta
+      name="description"
+      content="Get in touch with Skillex Academy admissions for course guidance, applications, partnerships, mentorship, or private healthcare business training enquiries."
+    />
+    <meta name="theme-color" content="#1aa6b7" />
+    <link rel="stylesheet" href="academy.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body data-page="contact">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="nav-overlay" id="navOverlay" hidden></div>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+    <nav id="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">✚</span>
+          <span class="logo-text"
+            >Skillex <span class="logo-accent">Ltd</span></span
+          >
+        </a>
+        <ul class="nav-links" id="navLinks">
+          <button
+            class="drawer-close"
+            id="drawerClose"
+            type="button"
+            aria-label="Close menu"
+          >
+            ×
+          </button>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="faculty.html">Faculty</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a class="cta-nav" href="programs.html">Apply Now</a>
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="navLinks"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <section class="page-hero" id="main">
+      <div class="container">
+        <div class="hero-tag">Contact Us</div>
+        <h1 class="hero-title">
+          Talk to
+          <span class="highlight-green">Admissions</span>
+        </h1>
+        <p class="hero-subtitle">
+          Reach out for course guidance, applications, partnerships, mentorship,
+          attachments, or private healthcare business training.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="section-label">Get in Touch</div>
+            <h2 class="section-title">
+              We're Here to
+              <span class="highlight-green">Help</span>
+            </h2>
+            <p>
+              Whether you are choosing a program, need help with your
+              application, or want to explore partnership opportunities, our
+              admissions team is ready to assist.
+            </p>
+            <div class="contact-details">
+              <div class="contact-item">
+                <span>📍</span>
+                <p>Reliance Centre, Woodvale Lane, Westlands</p>
+              </div>
+              <div class="contact-item">
+                <span>📧</span>
+                <p>
+                  <a href="mailto:Skillexinstitute@gmail.com"
+                    >Skillexinstitute@gmail.com</a
+                  >
+                </p>
+              </div>
+              <div class="contact-item">
+                <span>📞</span>
+                <p><a href="tel:+254722105773">0722 105 773</a></p>
+              </div>
+              <div class="contact-item">
+                <span>🌐</span>
+                <p>www.SkillexLtd.com</p>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form-wrap">
+            <form id="contactForm" class="contact-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Full Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    placeholder="Your full name"
+                    required
+                  />
+                  <div class="field-error" aria-live="polite"></div>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    placeholder="you@example.com"
+                    required
+                  />
+                  <div class="field-error" aria-live="polite"></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="service">Program of Interest</label>
+                <select id="service">
+                  <option value="">Select a program...</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea
+                  id="message"
+                  rows="4"
+                  placeholder="Tell us how we can help..."
+                  required
+                ></textarea>
+                <div class="field-error" aria-live="polite"></div>
+              </div>
+              <button type="submit" class="btn-primary full-width">
+                Send Message
+              </button>
+              <div id="formSuccess" class="form-success hidden">
+                Message noted. Please email or call admissions for immediate
+                follow-up.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Frequently Asked Questions</div>
+          <h2 class="section-title">
+            Quick <span class="highlight">Answers</span>
+          </h2>
+        </div>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h4>Who can apply?</h4>
+            <p>
+              Anyone interested in healthcare, pharmacy, or pharmaceutical
+              business can apply.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h4>Do you offer online classes?</h4>
+            <p>Yes. We offer physical, online, and hybrid learning options.</p>
+          </div>
+          <div class="faq-item">
+            <h4>How long are the courses?</h4>
+            <p>
+              Course duration varies by program, generally ranging from 12 weeks
+              to 14 weeks.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h4>Are practical sessions included?</h4>
+            <p>
+              Yes. Our training includes practical and hands-on learning
+              experiences.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h4>Do students receive certificates?</h4>
+            <p>
+              Yes. Certificates are awarded upon successful completion of
+              courses.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h4>Can I study while working?</h4>
+            <p>Yes. Flexible schedules include weekend and online classes.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Do you offer payment plans?</h4>
+            <p>Yes. Flexible payment options are available for some courses.</p>
+          </div>
+          <div class="faq-item">
+            <h4>Can international students apply?</h4>
+            <p>
+              Yes. International students are welcome for selected programs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="logo">
+              <span class="logo-icon">✚</span
+              ><span class="logo-text"
+                >Skillex <span class="logo-accent">Ltd</span></span
+              >
+            </div>
+            <p>
+              Professional pharmacy training in regulatory affairs,
+              pharmacovigilance, supply chain, marketing, entrepreneurship, and
+              clinical practice development.
+            </p>
+          </div>
+          <div class="footer-links">
+            <h5>Academy</h5>
+            <ul>
+              <li><a href="programs.html">Programs</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="programs.html">Apply Online</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h5>Pages</h5>
+            <ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="faculty.html">Faculty</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h5>Follow Us</h5>
+            <ul>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/pharma-excellence-academy-consulting-4463583b3/"
+                  >LinkedIn</a
+                >
+              </li>
+              <li><a href="#">TikTok</a></li>
+              <li><a href="#">YouTube</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Skillex Academy. All rights reserved.</p>
+          <p>NITA, TVETA, Pharmacy and Poisons Board</p>
+        </div>
+      </div>
+    </footer>
+
+    <div
+      id="toastContainer"
+      class="toast-container"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+      ↑
+    </button>
+    <script src="academy.js"></script>
+  </body>
+</html>

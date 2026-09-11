@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Program | Skillex Academy</title>
+    <meta
+      name="description"
+      content="Explore this certificate program at Skillex Academy. View curriculum, learning outcomes, career opportunities, and apply online."
+    />
+    <meta name="theme-color" content="#1aa6b7" />
+    <link rel="stylesheet" href="academy.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body data-page="course">
+    <a class="skip-link" href="#top">Skip to content</a>
+    <div class="nav-overlay" id="navOverlay" hidden></div>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+    <nav id="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <span class="logo-icon">✚</span>
+          <span class="logo-text"
+            >Skillex <span class="logo-accent">Ltd</span></span
+          >
+        </a>
+        <ul class="nav-links" id="navLinks">
+          <button
+            class="drawer-close"
+            id="drawerClose"
+            type="button"
+            aria-label="Close menu"
+          >
+            ×
+          </button>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="faculty.html">Faculty</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a class="cta-nav" href="programs.html">Apply Now</a>
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="navLinks"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <section class="page-hero course-detail-hero" id="top">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a>
+          <span class="sep">/</span>
+          <a href="programs.html">Programs</a>
+          <span class="sep">/</span>
+          <span class="current" id="crumbTitle">Course</span>
+        </div>
+        <div class="hero-tag" id="courseBadge">Certificate</div>
+        <h1 class="hero-title" id="courseTitle">Course Title</h1>
+        <p class="hero-subtitle" id="courseIntro">
+          Loading program details...
+        </p>
+        <div class="badge-row" id="courseChips"></div>
+      </div>
+    </section>
+
+    <section class="academy">
+      <div class="container">
+        <div class="course-detail-grid">
+          <div class="course-detail-main">
+            <div class="course-detail-section">
+              <h3><span>✅</span> About This Program</h3>
+              <div class="lead" id="courseAbout"></div>
+            </div>
+            <div class="course-detail-section">
+              <h3><span>🎓</span> Learning Outcomes</h3>
+              <ul class="outcome-list" id="courseOutcomes"></ul>
+            </div>
+            <div class="course-detail-section">
+              <h3><span>📚</span> Curriculum Overview</h3>
+              <div class="module-list" id="courseModules"></div>
+            </div>
+            <div class="course-detail-section">
+              <h3><span>🧑‍⚕️</span> Who Should Enroll</h3>
+              <ul class="check-list" id="courseIdeal"></ul>
+            </div>
+            <div class="course-detail-section">
+              <h3><span>💼</span> Career Opportunities</h3>
+              <ul class="check-list" id="courseCareers"></ul>
+            </div>
+          </div>
+          <aside class="course-sidebar">
+            <div class="price-pill" id="coursePrice">KES 25,000<small>Per program</small></div>
+            <div class="course-facts">
+              <h4>Program Facts</h4>
+              <div id="courseFacts"></div>
+            </div>
+            <div class="enroll-card">
+              <h4>Apply for this Program</h4>
+              <form id="courseEnrollForm">
+                <div class="form-group">
+                  <label for="ceName">Full Name</label>
+                  <input
+                    type="text"
+                    id="ceName"
+                    placeholder="Your full name"
+                    required
+                  />
+                  <div class="field-error" aria-live="polite"></div>
+                </div>
+                <div class="form-group">
+                  <label for="ceEmail">Email Address</label>
+                  <input
+                    type="email"
+                    id="ceEmail"
+                    placeholder="you@example.com"
+                    required
+                  />
+                  <div class="field-error" aria-live="polite"></div>
+                </div>
+                <div class="form-group">
+                  <label for="ceEducation">Level of Education</label>
+                  <input
+                    type="text"
+                    id="ceEducation"
+                    placeholder="Diploma / Degree / Other"
+                  />
+                  <div class="field-error" aria-live="polite"></div>
+                </div>
+                <div class="form-group">
+                  <label for="ceMode">Preferred Study Mode</label>
+                  <select id="ceMode">
+                    <option value="">Select mode...</option>
+                    <option>Online</option>
+                    <option>Physical</option>
+                    <option>Weekend</option>
+                    <option>Hybrid</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Program</label>
+                  <input type="text" id="ceProgram" readonly />
+                </div>
+                <div class="form-group">
+                  <label for="ceMessage">Anything else we should know?</label>
+                  <textarea
+                    id="ceMessage"
+                    rows="3"
+                    placeholder="Professional background, preferred study mode, etc. (optional)"
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn-primary full-width">
+                  Submit Application
+                </button>
+                <div
+                  id="courseEnrollSuccess"
+                  class="form-success hidden"
+                ></div>
+              </form>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container">
+        <h2>Not sure which program fits you?</h2>
+        <p>
+          Explore all our industry-focused certificate programs or talk to our
+          admissions team for guidance.
+        </p>
+        <div class="hero-buttons">
+          <a class="btn-primary" href="programs.html">View All Programs</a>
+          <a class="btn-outline" href="contact.html">Talk to Admissions</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="logo">
+              <span class="logo-icon">✚</span
+              ><span class="logo-text"
+                >Skillex <span class="logo-accent">Ltd</span></span
+              >
+            </div>
+            <p>
+              Professional pharmacy training in regulatory affairs,
+              pharmacovigilance, supply chain, marketing, entrepreneurship, and
+              clinical practice development.
+            </p>
+          </div>
+          <div class="footer-links">
+            <h5>Academy</h5>
+            <ul>
+              <li><a href="programs.html">Programs</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="programs.html">Apply Online</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h5>Pages</h5>
+            <ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="faculty.html">Faculty</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h5>Follow Us</h5>
+            <ul>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/pharma-excellence-academy-consulting-4463583b3/"
+                  >LinkedIn</a
+                >
+              </li>
+              <li><a href="#">TikTok</a></li>
+              <li><a href="#">YouTube</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Skillex Academy. All rights reserved.</p>
+          <p>NITA, TVETA, Pharmacy and Poisons Board</p>
+        </div>
+      </div>
+    </footer>
+
+    <div
+      id="toastContainer"
+      class="toast-container"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+      ↑
+    </button>
+    <script src="academy.js"></script>
+  </body>
+</html>

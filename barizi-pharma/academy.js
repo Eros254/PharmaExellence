@@ -169,7 +169,7 @@ function addRevealClasses() {
   );
   sections.forEach(function (section) {
     var children = section.querySelectorAll(
-      ".service-card, .course-card, .tech-feature, .pillar, .about-card-main, .about-card-accent, .info-panel, .faq-item, .testimonial-card, .post-card",
+      ".service-card, .course-card, .tech-feature, .pillar, .about-card-main, .about-card-accent, .info-panel, .faq-item, .testimonial-card, .post-card, .mission-card, .module-item, .course-fact, .value-item, .enroll-card, .course-detail-section, .profile-card, .badge-chip",
     );
     children.forEach(function (el, index) {
       el.classList.add("reveal");
@@ -609,6 +609,12 @@ function initForms() {
     applyForm.addEventListener("submit", submitApply);
     attachValidation(applyForm);
   }
+
+  var courseEnrollForm = document.getElementById("courseEnrollForm");
+  if (courseEnrollForm) {
+    courseEnrollForm.addEventListener("submit", submitCourseEnroll);
+    attachValidation(courseEnrollForm);
+  }
 }
 
 function initSlider() {
@@ -641,6 +647,8 @@ document.addEventListener("DOMContentLoaded", function () {
   updateScrollProgress();
   updateBackToTop();
   animateCounters();
+  setActiveNavLink();
+  renderCoursePage();
 
   if (backToTop) {
     backToTop.addEventListener("click", function () {
@@ -672,3 +680,468 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 16);
   });
 });
+
+/* ===========================
+   MULTI-PAGE UTILITIES
+   =========================== */
+
+var COURSES = {
+  "regulatory-affairs": {
+    slug: "regulatory-affairs",
+    title: "Certificate in Regulatory Affairs",
+    icon: "\u{1f4cb}",
+    badge: "Certificate",
+    level: "Certificate",
+    price: 25000,
+    duration: "12-14 weeks",
+    mode: "Online",
+    start: "Rolling intake",
+    intro:
+      "Practical online training for pharmaceutical regulatory professionals in dossier compilation, product registration, GMP applications, trade permits, variations, and regulatory report writing.",
+    about:
+      "This certificate program equips pharmaceutical professionals with practical skills in navigating regulatory systems for medicines and health products. Learners gain hands-on experience in dossier preparation aligned with Common Technical Document (CTD) and eCTD standards, product registration and renewal processes, Good Manufacturing Practice (GMP) applications, trade permits, and post-market regulatory compliance. The program is delivered online with live sessions, recorded lessons, case studies, and assignment-based assessment to ensure working professionals can balance learning with their careers.",
+    outcomes: [
+      "Prepare regulatory dossiers in CTD and eCTD formats",
+      "Manage product registration and renewal applications",
+      "Compile GMP application documents and inspection dossiers",
+      "Write clear regulatory reports and variation applications",
+      "Navigate trade permit and import licensing processes",
+      "Understand post-market surveillance and compliance frameworks",
+    ],
+    modules: [
+      "Introduction to Pharmaceutical Regulation and Medicines Act",
+      "Regulatory Systems Overview: KEBS, PPB, and International Bodies",
+      "Dossier Compilation and Common Technical Document (CTD/eCTD)",
+      "Product Registration and Renewal Processes",
+      "Good Manufacturing Practice (GMP) Applications and Inspections",
+      "Variations, Trade Permits, and Import Licensing",
+      "Regulatory Report Writing and Compliance Documentation",
+      "Post-Market Surveillance and Pharmacovigilance Integration",
+    ],
+    idealFor: [
+      "Pharmacy graduates and licensed pharmacists",
+      "Quality assurance professionals in pharmaceutical companies",
+      "Regulatory affairs officers seeking formal certification",
+      "Healthcare professionals transitioning into regulatory roles",
+    ],
+    careers: [
+      "Regulatory Affairs Officer at pharmaceutical companies",
+      "Compliance Analyst at regulatory authorities",
+      "Quality Assurance Manager in manufacturing facilities",
+      "Regulatory Consultant serving multiple pharmaceutical clients",
+      "Government Regulatory Inspector",
+    ],
+  },
+  pharmacovigilance: {
+    slug: "pharmacovigilance",
+    title: "Certificate in Pharmacovigilance",
+    icon: "\u{1f6e1}\ufe0f",
+    badge: "Certificate",
+    level: "Certificate",
+    price: 25000,
+    duration: "12-14 weeks",
+    mode: "Hybrid",
+    start: "Rolling intake",
+    intro:
+      "Develop practical skills in medicine safety, adverse event reporting, signal awareness, risk communication, and safety documentation for pharmaceutical and clinical settings.",
+    about:
+      "This program builds strong foundations in pharmacovigilance practice, equipping learners with the skills to detect, assess, understand, and prevent adverse effects of pharmaceutical products. Students learn signal detection and evaluation, safety case processing and reporting, risk communication, and the regulatory requirements surrounding drug safety monitoring. The hybrid format combines online self-paced learning with practical workshops on real safety databases and case management systems.",
+    outcomes: [
+      "Identify, classify, and report adverse drug reactions",
+      "Process safety case reports using internationally accepted standards",
+      "Understand signal detection and evaluation methodologies",
+      "Prepare Periodic Safety Update Reports (PSURs)",
+      "Implement pharmacovigilance systems within healthcare organizations",
+      "Apply national and international drug safety regulations",
+    ],
+    modules: [
+      "Principles of Pharmacovigilance and Drug Safety",
+      "Adverse Event Classification, Reporting, and Case Processing",
+      "Signal Detection, Evaluation, and Management",
+      "Risk Communication and Benefit-Risk Assessment",
+      "Periodic Safety Update Reports (PSURs) and Safety Documentation",
+      "Pharmacovigilance Regulatory Requirements: National and International",
+      "Pharmacovigilance System Master Files and Quality Systems",
+      "Pharmacovigilance in Clinical Practice and Public Health",
+    ],
+    idealFor: [
+      "Pharmacists and healthcare professionals involved in drug safety",
+      "Quality assurance and compliance officers",
+      "Clinical research associates and trial coordinators",
+      "Recent pharmacy graduates seeking specialized pharmacovigilance skills",
+    ],
+    careers: [
+      "Pharmacovigilance Officer at pharmaceutical companies",
+      "Drug Safety Associate at regulatory authorities",
+      "Medical Safety Lead in clinical research organizations",
+      "Pharmacovigilance Auditor and Consultant",
+      "Patient Safety Officer in hospital settings",
+    ],
+  },
+  "supply-chain": {
+    slug: "supply-chain",
+    title: "Certificate in Pharmaceutical Supply Chain Management",
+    icon: "\u{1f69a}",
+    badge: "Certificate",
+    level: "Certificate",
+    price: 28000,
+    duration: "12-14 weeks",
+    mode: "Weekend Classes",
+    start: "Rolling intake",
+    intro:
+      "Learn procurement, storage, distribution, inventory control, quality assurance, and compliant movement of healthcare products across the pharmaceutical supply chain.",
+    about:
+      "This certificate program provides a comprehensive understanding of the pharmaceutical supply chain from procurement through to final distribution. Students learn to manage inventory forecasting, supplier negotiation, cold chain logistics, storage standards, transportation compliance, and quality assurance at every stage. The weekend format is designed for working professionals, with practical workshops, supply chain simulations, and real-world case studies drawn from public and private healthcare systems.",
+    outcomes: [
+      "Manage pharmaceutical procurement and supplier relationships",
+      "Implement effective inventory control and demand forecasting",
+      "Oversee storage standards including cold chain management",
+      "Ensure compliant distribution and transportation of health products",
+      "Apply quality assurance protocols across the supply chain",
+      "Utilize digital tools for supply chain visibility and efficiency",
+    ],
+    modules: [
+      "Healthcare Supply Chain Fundamentals and Global Best Practices",
+      "Procurement Strategy and Supplier Management",
+      "Storage Standards, Cold Chain, and Warehouse Management",
+      "Inventory Control, Forecasting, and Demand Planning",
+      "Distribution, Transportation, and Last-Mile Delivery",
+      "Quality Assurance and Good Distribution Practice (GDP)",
+      "Regulatory Compliance in Pharmaceutical Distribution",
+      "Digital Supply Chain Tools and Data-Driven Decision Making",
+    ],
+    idealFor: [
+      "Pharmacy professionals managing inventory or distribution",
+      "Procurement officers in healthcare organizations",
+      "Warehouse and logistics managers in pharmaceutical settings",
+      "Supply chain professionals seeking healthcare sector specialization",
+    ],
+    careers: [
+      "Pharmaceutical Supply Chain Manager",
+      "Procurement Lead at hospitals and pharmaceutical companies",
+      "Warehouse and Distribution Manager",
+      "Logistics Coordinator for medical supplies",
+      "Quality Assurance Officer in supply chain operations",
+    ],
+  },
+  marketing: {
+    slug: "marketing",
+    title: "Certificate in Pharmaceutical Marketing",
+    icon: "\u{1f4e3}",
+    badge: "Certificate",
+    level: "Certificate",
+    price: 22000,
+    duration: "12-14 weeks",
+    mode: "Hybrid",
+    start: "Rolling intake",
+    intro:
+      "Medical representatives training covering ethical promotion, product knowledge, territory planning, customer engagement, and field reporting for pharmaceutical sales teams.",
+    about:
+      "This program is designed specifically for medical representatives and pharmaceutical marketing professionals. Learners gain skills in ethical product promotion aligned with industry codes of conduct, deep product knowledge communication, territory planning and management, customer engagement and detailing techniques, and field reporting. The hybrid format includes online theory modules combined with practical field workshops and simulated detailing sessions to build real-world confidence and capability.",
+    outcomes: [
+      "Deliver compliant and ethical pharmaceutical product promotions",
+      "Build strong territory plans and field coverage strategies",
+      "Develop effective customer engagement and detailing skills",
+      "Understand pharmaceutical market research and competitive analysis",
+      "Prepare professional field reports and performance tracking",
+      "Apply medical ethics and regulatory guidelines in marketing",
+    ],
+    modules: [
+      "Pharmaceutical Marketing Essentials and Industry Overview",
+      "Medical Product Knowledge and Therapeutic Area Deep Dive",
+      "Ethical Promotion and Code of Conduct Compliance",
+      "Territory Planning, Field Coverage, and Call Scheduling",
+      "Customer Engagement, Detailing, and Relationship Management",
+      "Market Research and Competitive Intelligence",
+      "Field Reporting, KPIs, and Performance Management",
+      "Regulations and Legal Considerations in Pharmaceutical Marketing",
+    ],
+    idealFor: [
+      "Medical representatives seeking formal certification",
+      "Sales professionals entering the pharmaceutical industry",
+      "Marketing coordinators in healthcare companies",
+      "Pharmacy graduates interested in pharmaceutical sales careers",
+    ],
+    careers: [
+      "Medical Representative at pharmaceutical companies",
+      "Territory Sales Manager",
+      "Key Account Manager for hospital and clinic accounts",
+      "Product Marketing Coordinator",
+      "Pharmaceutical Sales Team Leader",
+    ],
+  },
+  "digital-marketing": {
+    slug: "digital-marketing",
+    title: "Certificate in Pharmaceutical Digital Marketing",
+    icon: "\u{1f4bb}",
+    badge: "Certificate",
+    level: "Certificate",
+    price: 20000,
+    duration: "12-14 weeks",
+    mode: "Online",
+    start: "Rolling intake",
+    intro:
+      "Build healthcare-focused digital skills for compliant content, brand visibility, campaigns, analytics, and online customer education.",
+    about:
+      "This certificate program teaches digital marketing principles and practices within the pharmaceutical and healthcare sector. Students learn to create compliant digital content, build brand visibility online, plan and execute multi-channel campaigns, analyze digital performance metrics, and engage healthcare audiences through educational content. All content is designed with healthcare advertising regulations in mind, ensuring graduates can balance effective marketing with industry compliance.",
+    outcomes: [
+      "Create compliant digital content for pharmaceutical audiences",
+      "Build and manage online brand presence across platforms",
+      "Plan and execute digital marketing campaigns with measurable KPIs",
+      "Use analytics tools to measure and optimize digital performance",
+      "Design patient education and healthcare awareness campaigns",
+      "Navigate healthcare advertising regulations in digital spaces",
+    ],
+    modules: [
+      "Digital Marketing Fundamentals for Healthcare Professionals",
+      "Compliant Content Creation for Pharmaceutical Audiences",
+      "Brand Building and Online Presence Management",
+      "Social Media Strategy and Healthcare Audience Engagement",
+      "Campaign Planning, Execution, and Performance Analytics",
+      "Email Marketing, SEO, and Paid Digital Channels",
+      "Patient Education and Healthcare Awareness Online",
+      "Regulatory Compliance in Healthcare Digital Advertising",
+    ],
+    idealFor: [
+      "Marketing professionals in pharmaceutical and healthcare sectors",
+      "Pharmacy owners building online brand presence",
+      "Social media managers in healthcare organizations",
+      "Recent graduates interested in digital healthcare marketing",
+    ],
+    careers: [
+      "Digital Marketing Specialist for pharmaceutical brands",
+      "Healthcare Content Marketing Manager",
+      "Social Media and Brand Manager in healthcare",
+      "Digital Campaign Analyst",
+      "Healthcare Communications Coordinator",
+    ],
+  },
+  "private-healthcare": {
+    slug: "private-healthcare",
+    title: "Private Healthcare Business Programs",
+    icon: "\u{1f3e2}",
+    badge: "Business Program",
+    level: "Business",
+    price: 35000,
+    duration: "Flexible (8-16 weeks)",
+    mode: "Physical / Hybrid",
+    start: "Rolling intake",
+    intro:
+      "Training in pharmaceutical business management, medical supplies distribution, healthcare startups, and importation of medical products for aspiring healthcare entrepreneurs.",
+    about:
+      "This business-focused program is designed for healthcare entrepreneurs and professionals looking to start or grow a private healthcare or pharmaceutical business. Learners gain practical training in pharmaceutical business management, medical supplies distribution, startup planning, financial management, regulatory compliance for business operations, and responsible importation of medical products. The flexible schedule accommodates entrepreneurs and business owners who need to balance learning with operational responsibilities.",
+    outcomes: [
+      "Develop a viable pharmaceutical or healthcare business plan",
+      "Understand regulatory requirements for healthcare business operations",
+      "Manage pharmaceutical procurement, distribution, and compliance",
+      "Build financial management and pricing skills for healthcare businesses",
+      "Navigate importation regulations and licensing for medical products",
+      "Apply responsible and ethical business practices in healthcare",
+    ],
+    modules: [
+      "Pharmaceutical Business Management Fundamentals",
+      "Starting and Scaling Healthcare Startups",
+      "Medical Supplies Distribution and Market Strategy",
+      "Financial Management and Pricing in Healthcare",
+      "Importation of Medical Products: Regulations, Licensing, and Compliance",
+      "Regulatory Approvals and Business Permits for Healthcare Companies",
+      "Customer and Market Strategy in Healthcare Business",
+      "Responsible Healthcare Entrepreneurship and Ethical Business Practice",
+    ],
+    idealFor: [
+      "Pharmacists and healthcare professionals planning to start a business",
+      "Existing pharmacy owners expanding their operations",
+      "Entrepreneurs entering the medical supplies distribution sector",
+      "Healthcare professionals seeking business management skills",
+    ],
+    careers: [
+      "Pharmacy and Healthcare Business Owner",
+      "Medical Supplies Distribution Company Director",
+      "Healthcare Startup Founder",
+      "Pharmaceutical Import and Export Business Manager",
+      "Private Healthcare Facility Manager",
+    ],
+  },
+};
+
+function getParam(name) {
+  var params = new URLSearchParams(window.location.search);
+  return params.get(name);
+}
+
+function setActiveNavLink() {
+  var page = document.body.getAttribute("data-page");
+  if (!page) return;
+  var file = "index.html";
+  switch (page) {
+    case "home":
+      file = "index.html";
+      break;
+    case "about":
+      file = "about.html";
+      break;
+    case "programs":
+      file = "programs.html";
+      break;
+    case "faculty":
+      file = "faculty.html";
+      break;
+    case "blog":
+      file = "blog.html";
+      break;
+    case "contact":
+      file = "contact.html";
+      break;
+    case "course":
+      file = "programs.html";
+      break;
+  }
+  document.querySelectorAll(".nav-links a").forEach(function (link) {
+    var href = link.getAttribute("href") || "";
+    var target = href.split("#")[0];
+    if (target === file) {
+      link.classList.add("active-page");
+    }
+  });
+}
+
+function renderCoursePage() {
+  if (!document.getElementById("courseTitle")) return;
+  var slug = getParam("course");
+  var course = COURSES[slug] || COURSES["regulatory-affairs"];
+
+  document.title = course.title + " | Skillex Academy";
+  document.getElementById("crumbTitle").textContent = course.title;
+  document.getElementById("courseTitle").textContent = course.title;
+  document.getElementById("courseBadge").textContent = course.badge;
+  document.getElementById("courseIntro").textContent = course.intro;
+
+  var chipsHtml =
+    '<span class="badge-chip">\u23f1 ' + course.duration + "</span>" +
+    '<span class="badge-chip green">\ud83d\udcc4 ' + course.mode + "</span>" +
+    '<span class="badge-chip">\ud83c\udf93 ' + course.level + "</span>" +
+    '<span class="badge-chip green">\ud83d\udcc5 ' + course.start + "</span>";
+  document.getElementById("courseChips").innerHTML = chipsHtml;
+
+  var aboutHtml = "";
+  course.about.split("\n\n").forEach(function (para) {
+    aboutHtml += "<p>" + para + "</p>";
+  });
+  document.getElementById("courseAbout").innerHTML = aboutHtml;
+
+  document.getElementById("courseOutcomes").innerHTML = course.outcomes
+    .map(function (o) {
+      return "<li>" + o + "</li>";
+    })
+    .join("");
+
+  document.getElementById("courseModules").innerHTML = course.modules
+    .map(function (m, i) {
+      return (
+        '<div class="module-item"><span class="module-num">' +
+        String(i + 1).padStart(2, "0") +
+        "</span><p>" +
+        m +
+        "</p></div>"
+      );
+    })
+    .join("");
+
+  document.getElementById("courseIdeal").innerHTML = course.idealFor
+    .map(function (s) {
+      return "<li>" + s + "</li>";
+    })
+    .join("");
+
+  document.getElementById("courseCareers").innerHTML = course.careers
+    .map(function (s) {
+      return "<li>" + s + "</li>";
+    })
+    .join("");
+
+  document.getElementById("coursePrice").innerHTML =
+    "KES " +
+    Number(course.price).toLocaleString() +
+    "<small>Per program</small>";
+
+  document.getElementById("courseFacts").innerHTML =
+    '<div class="course-fact"><span>Duration</span><strong>' +
+    course.duration +
+    "</strong></div>" +
+    '<div class="course-fact"><span>Study Mode</span><strong>' +
+    course.mode +
+    "</strong></div>" +
+    '<div class="course-fact"><span>Level</span><strong>' +
+    course.level +
+    "</strong></div>" +
+    '<div class="course-fact"><span>Price</span><strong>KES ' +
+    Number(course.price).toLocaleString() +
+    "</strong></div>" +
+    '<div class="course-fact"><span>Next Intake</span><strong>' +
+    course.start +
+    "</strong></div>" +
+    '<div class="course-fact"><span>Certificate</span><strong>Yes, on completion</strong></div>';
+
+  var programField = document.getElementById("ceProgram");
+  if (programField) programField.value = course.title;
+}
+
+function submitCourseEnroll(e) {
+  e.preventDefault();
+  var form = e.target;
+  var successMsg = document.getElementById("courseEnrollSuccess");
+  var nameField = document.getElementById("ceName");
+  var emailField = document.getElementById("ceEmail");
+  var educationField = document.getElementById("ceEducation");
+  var modeField = document.getElementById("ceMode");
+  var programField = document.getElementById("ceProgram");
+  var messageField = document.getElementById("ceMessage");
+
+  var valid = validateField(nameField) && validateField(emailField);
+
+  if (!valid) {
+    showToast(
+      "Validation needed",
+      "Please add your name and a valid email before submitting.",
+      "error"
+    );
+    if (successMsg) {
+      successMsg.textContent =
+        "Please add your name and a valid email before submitting.";
+      successMsg.classList.remove("hidden");
+    }
+    return;
+  }
+
+  var studyMode = modeField ? modeField.value : "";
+  var extraMessage = studyMode
+    ? "Preferred study mode: " + studyMode
+    : "";
+
+  handleFormSubmission({
+    form: form,
+    successMsg: successMsg,
+    savingText: "Submitting your application securely...",
+    successToastTitle: "Application received",
+    successToastMsg:
+      "Thanks! Our admissions team will follow up by email shortly.",
+    successText:
+      "Thanks! Your application for " +
+      programField.value +
+      " has been received. Our admissions team will follow up by email within 1-2 business days.",
+    errorText:
+      "Your application could not be stored live yet. Please email admissions directly for immediate follow-up.",
+    errorLogLabel: "Course enrollment submission failed:",
+    resetLabel: "Submit Application",
+    payload: {
+      type: "enrollment",
+      full_name: nameField.value.trim(),
+      email: emailField.value.trim(),
+      program: programField.value.trim(),
+      education_level: educationField ? educationField.value.trim() : "",
+      message: (messageField ? messageField.value.trim() : "") +
+        (extraMessage ? (messageField && messageField.value.trim() ? "\n" : "") + extraMessage : ""),
+      created_at: new Date().toISOString(),
+    },
+  });
+}

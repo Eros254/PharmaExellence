@@ -4,6 +4,6 @@
   "installCommand": null,
   "outputDirectory": "barizi-pharma",
   "rewrites": [
-    { "source": "/academy.html", "destination": "/index.html" }
+    { "source": "/academy.html", "destination": "/programs.html" }
   ]
 }
