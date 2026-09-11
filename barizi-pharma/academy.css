@@ -2738,3 +2738,258 @@ nav#navbar.scrolled {
     text-align: left;
   }
 }
+
+/* ===========================
+   MOBILE HARDENING & OVERLAP FIXES
+   =========================== */
+
+/* Prevent horizontal overflow globally while keeping `position: sticky`
+   working (clip does not create a scroll container like hidden can). */
+body {
+  overflow-x: clip;
+}
+
+img,
+svg,
+video,
+iframe,
+canvas {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+button,
+label,
+strong,
+em,
+li,
+span {
+  overflow-wrap: break-word;
+}
+
+.course-card h4,
+.profile-card h3,
+.post-card h3,
+.enroll-card h4,
+.course-detail-section h3,
+.cta-band h2,
+.mission-card h3,
+.value-item strong,
+.footer-brand p {
+  overflow-wrap: anywhere;
+}
+
+/* Grid/flex children must be able to shrink so text never forces overflow. */
+.course-card,
+.profile-card,
+.post-card,
+.service-card,
+.info-panel,
+.faq-item,
+.enroll-card,
+.contact-form,
+.course-facts,
+.mission-card,
+.value-item,
+.module-item,
+.course-detail-section,
+.hero-container,
+.testimonial-card,
+.course-card-actions {
+  min-width: 0;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Tablet + mobile: switch to drawer nav to prevent link overlap.
+   Previously links stayed inline between 769-1024px and collided with the
+   logo / CTA. */
+@media (max-width: 1024px) {
+  .nav-container {
+    gap: 8px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(82vw, 320px);
+    height: 100vh;
+    background: var(--white);
+    padding: 20px 18px 24px;
+    gap: 8px;
+    border-left: 1px solid var(--blue-light);
+    box-shadow: -8px 0 30px rgba(16, 42, 55, 0.16);
+    z-index: 1001;
+    overflow-y: auto;
+  }
+
+  .nav-links.open a {
+    display: block;
+    width: 100%;
+    padding: 13px 14px;
+    font-size: 0.96rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .nav-links .drawer-close {
+    display: inline-flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero {
+    min-height: 0;
+  }
+}
+
+/* Course detail / inner page fixes */
+@media (max-width: 768px) {
+  .breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    row-gap: 6px;
+  }
+
+  .course-detail-section h3 {
+    flex-wrap: wrap;
+  }
+
+  .module-item {
+    align-items: flex-start;
+  }
+
+  .module-item p {
+    min-width: 0;
+  }
+
+  .course-card-actions .btn-course,
+  .course-card-actions .view-link {
+    width: 100%;
+  }
+
+  .badge-row {
+    gap: 8px;
+  }
+
+  .value-item .value-dot {
+    width: 38px;
+    height: 38px;
+  }
+
+  .footer-grid {
+    gap: 32px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .stat {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    column-gap: 8px;
+    row-gap: 4px;
+  }
+
+  .stat p {
+    width: 100%;
+  }
+
+  .cta-band .hero-buttons {
+    flex-direction: column;
+  }
+
+  .cta-band .hero-buttons .btn-primary,
+  .cta-band .hero-buttons .btn-outline {
+    width: 100%;
+  }
+
+  .page-hero .hero-subtitle {
+    max-width: 100%;
+  }
+
+  .hero-title {
+    font-size: 1.78rem;
+  }
+
+  .section-title {
+    font-size: 1.45rem;
+  }
+
+  .mini-card {
+    font-size: 0.9rem;
+  }
+}
+
+/* Very small screens (<=360px) */
+@media (max-width: 360px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .nav-container {
+    padding: 0 12px;
+  }
+
+  .hero,
+  .page-hero {
+    padding: 84px 12px 36px;
+  }
+
+  .hero-title {
+    font-size: 1.6rem;
+  }
+
+  .hero-tag,
+  .section-label {
+    font-size: 0.74rem;
+    padding: 6px 12px;
+  }
+
+  .module-item {
+    gap: 10px;
+    padding: 12px 14px;
+  }
+
+  .value-dot {
+    width: 34px;
+    height: 34px;
+  }
+
+  .enroll-card,
+  .course-facts {
+    padding: 20px 16px;
+  }
+
+  .profile-avatar {
+    width: 60px;
+    height: 60px;
+  }
+}
