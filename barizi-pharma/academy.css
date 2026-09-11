@@ -525,16 +525,7 @@ nav#navbar.scrolled {
    =========================== */
 .about {
   padding: 96px 24px;
-  background: linear-gradient(
-      to right,
-      var(--white) 0%,
-      rgba(255, 255, 255, 0.72) 50%,
-      rgba(255, 255, 255, 0.45) 100%
-    ),
-    url("Images/herobg.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: var(--white);
 }
 
 .about-grid {
