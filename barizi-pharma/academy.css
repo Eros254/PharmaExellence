@@ -198,11 +198,15 @@ nav#navbar.scrolled {
 .hero {
   min-height: 92vh;
   background: linear-gradient(
-    135deg,
-    var(--off-white) 0%,
-    var(--blue-light) 60%,
-    #e0f5ea 100%
-  );
+      135deg,
+      rgba(247, 251, 254, 0.88) 0%,
+      rgba(231, 248, 250, 0.88) 60%,
+      rgba(224, 245, 234, 0.88) 100%
+    ),
+    url("Images/herobg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 120px 24px 70px;
   display: flex;
   align-items: center;
